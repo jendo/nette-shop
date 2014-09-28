@@ -32,8 +32,5 @@ extensions:
 dibi:
 	driver: postgre
 	host: postgresql.websupport.sk
-	username: 
-	password: 
-	database: 
 	port: 5432
 	lazy: false
