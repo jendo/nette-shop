@@ -25,3 +25,15 @@ services:
 	- App\Model\UserManager
 	- App\RouterFactory
 	router: @App\RouterFactory::createRouter
+
+extensions:
+	dibi: DibiNette21Extension
+
+dibi:
+	driver: postgre
+	host: postgresql.websupport.sk
+	username: kabelky
+	password: michalj
+	database: kabelky
+	port: 5432
+	lazy: false
