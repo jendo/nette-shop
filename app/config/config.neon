@@ -24,6 +24,7 @@ nette:
 services:
 	- App\Model\UserManager
 	- App\RouterFactory
+	categoryManager: App\Model\CategoryManager
 	router: @App\RouterFactory::createRouter
 
 dibi:
