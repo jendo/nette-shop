@@ -14,6 +14,7 @@ class HomepagePresenter extends BasePresenter
 
 	public function renderDefault()
 	{
+		$categoryManager = $this->getCategoryManager();
 		$this->template->anyVariable = 'any value';
 	}
 
