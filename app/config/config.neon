@@ -30,9 +30,9 @@ services:
 dibi:
 	driver: postgre
 	host: postgresql.websupport.sk
-	username: kabelky
-	password: michalj
-	database: kabelky
+	username:
+	password:
+	database:
 	port: 5432
 	lazy: true
 
