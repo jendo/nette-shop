@@ -3,31 +3,11 @@
 namespace Components;
 
 use Nette\Application\UI\Control;
+use Nette;
 
 abstract class BaseComponent extends Control
 {
 
-	/**
-	 * Constructor.
-	 *
-	 * @param Nette\ComponentModel\IContainer $parent
-	 * @param string $name
-	 */
-	public function __construct(\Nette\ComponentModel\IContainer $parent = NULL, $name = NULL)
-	{
-		parent::__construct($parent, $name);
-		$this->init();
-	}
-
-	/**
-	 * Creates component
-	 *
-	 * @return void
-	 */
-	 protected function init()
-	 {
-		return;
-	 }
 
 	/**
 	 * Set's own templates
