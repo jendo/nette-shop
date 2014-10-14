@@ -1,0 +1,20 @@
+{form form}
+
+{*
+{var $target = $form->getFormMsgTarget()}
+{include "$dir/page/flashes.latte", flashes => $form->errors, target => $target}
+*}
+
+<div >
+	<div class="input-group">
+		{input email}
+	</div>
+	<div class="input-group">
+		{input pass}
+	</div>
+	<div class="input-group">
+	{input signup class => "btn btn-success btn-lg ajax-btn" }
+	</div>
+</div>
+
+{/form}
