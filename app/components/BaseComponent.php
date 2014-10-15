@@ -8,6 +8,12 @@ use Nette;
 abstract class BaseComponent extends Control
 {
 
+	/**
+	 * Before render event
+	 *
+	 * @var event
+	 */
+	public $onBeforeRender;
 
 	/**
 	 * Set's own templates
@@ -58,7 +64,7 @@ abstract class BaseComponent extends Control
 		foreach ((array) $args as $arg => $value) {
 			$this->template->$arg = $value;
 		}
-		//parent::__call('onBeforeRender', (array) $args);
+		parent::__call('onBeforeRender', (array) $args);
 		$this->template->render();
 		//parent::__call('onAfterRender', (array) $args);
 	}

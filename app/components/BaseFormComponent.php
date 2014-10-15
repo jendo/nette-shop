@@ -34,7 +34,19 @@ final class BaseFormComponent extends BaseComponent
 	{
 		parent::__construct($parent, $name);
 		$this->formFactory = $formFactory;
+		$this->onBeforeRender[] = array($this, 'beforeRender');
+	}
 
+	/**
+	 * Before render function
+	 *
+	 * @return void
+	 */
+	public function beforeRender()
+	{
+		$form = $this->getForm();
+		//Toto uz nie je potreba, nette automaticky predava object form do sablon
+		//$this->template->form = $form;
 	}
 
 	/**
@@ -55,7 +67,7 @@ final class BaseFormComponent extends BaseComponent
 	public function createComponentForm($name)
 	{
 		$formFactory = $this->formFactory;
-		$form = $formFactory($this,$name);
+		$form = $formFactory($this, $name);
 		return $form;
 	}
 
