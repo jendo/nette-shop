@@ -1,20 +1,21 @@
-{form form}
+{form form class => "form-log-in form-horizontal" }
 
 {*
 {var $target = $form->getFormMsgTarget()}
 {include "$dir/page/flashes.latte", flashes => $form->errors, target => $target}
 *}
 
-<div >
-	<div class="input-group">
-		{input email}
-	</div>
-	<div class="input-group">
-		{input pass}
-	</div>
-	<div class="input-group">
-	{input signup class => "btn btn-success btn-lg ajax-btn" }
-	</div>
+<div class="control-group">
+	{label email class => "control-label"}{/label}
+	<div class="controls">{input email}</div>
 </div>
+<div class="control-group">
+	{label pass class => "control-label"}{/label}
+	<div class="controls">{input pass}</div>
+</div>
+<div class="control-group">
+	<div class="controls">{input signup class => "btn btn-lg ajax-btn" }</div>
+</div>
+
 
 {/form}
