@@ -11,10 +11,20 @@ use Nette;
 abstract class BaseForm extends Nette\Application\UI\Form
 {
 
+	/**
+	 * Custom validator full class name with namespace
+	 *
+	 * @var string
+	 */
+	private $customValidtorsClassName;
+
+
 	public function __construct(Nette\ComponentModel\IContainer $parent = NULL, $name = NULL)
 	{
 		parent::__construct($parent, $name);
+		$this->customValidtorsClassName = \Application\Forms\CustomValidators::getClassName();
 		$this->init();
+		// From callbacks
 		$this->onValidate[] = array($this, 'formValidate');
 		$this->onSubmit[] = array($this, 'formSubmitted');
 		$this->onSuccess[] = array($this, 'processForm');
@@ -34,6 +44,16 @@ abstract class BaseForm extends Nette\Application\UI\Form
 		$class = substr($class, strrpos($class, '\\') + 1);
 		$class = strtolower(substr($class, 0, 1)) . substr($class, 1);
 		return $dir . $class . '.latte';
+	}
+
+	/**
+	 * Get custom validators class name
+	 *
+	 * @return string
+	 */
+	public function getCustomValidtorsClassName()
+	{
+		return $this->customValidtorsClassName;
 	}
 
 	/**
