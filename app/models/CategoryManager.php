@@ -12,4 +12,10 @@ class CategoryManager
 	{
 		$this->dibi = $dibi;
 	}
+
+	public function findAll()
+	{
+		return $this->dibi->query('SELECT * FROM categories ORDER BY `order`')->fetchAll();
+	}
+
 }
