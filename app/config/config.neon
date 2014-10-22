@@ -5,6 +5,10 @@
 # http://nette.org/security-warning
 #
 parameters:
+	frontAppDir: %appDir%\FrontModule
+	global:
+		price:
+			decimals: 2
 
 
 php:

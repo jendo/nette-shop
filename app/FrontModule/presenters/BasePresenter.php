@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Presenters;
+namespace App\FrontModule\Presenters;
 
-use Nette,
-		App\Model;
+use Nette;
 
 /**
  * Base presenter for all application presenters.

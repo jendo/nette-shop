@@ -44,6 +44,6 @@ class TemplateVars
 		//		$template->staticBaseUrl = trim($template->config->staticBaseUrl, '/');
 		//		$template->tkStaticBaseUrl = trim($template->config->tkStaticBaseUrl, '/');
 		//		$template->serverName = Nette\Environment::getHttpRequest()->getUrl()->host;
-		$template->dir = Nette\Environment::getVariable('appDir') . '/templates/';
+		$template->frontAppDir = Nette\Environment::getVariable('frontAppDir') . '/templates/';
 	}
 }

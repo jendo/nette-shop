@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Presenters;
+namespace FrontModule\Presenters;
 
-use Nette,
-	App\Model,
-	Tracy\Debugger;
+use Nette, Tracy\Debugger;
 
 
 /**
