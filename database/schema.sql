@@ -4,11 +4,11 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 
 -- -----------------------------------------------------
--- Table `categories`
+-- Table `category`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `categories` ;
+DROP TABLE IF EXISTS `category` ;
 
-CREATE TABLE IF NOT EXISTS `categories` (
+CREATE TABLE IF NOT EXISTS `category` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `parent` INT NULL DEFAULT NULL,
   `name` VARCHAR(100) NOT NULL,
@@ -19,9 +19,23 @@ CREATE TABLE IF NOT EXISTS `categories` (
   INDEX `parent_index` (`parent` ASC),
   CONSTRAINT `fk1`
     FOREIGN KEY (`parent`)
-    REFERENCES `categories` (`id`)
+    REFERENCES `category` (`id`)
     ON DELETE SET NULL
     ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `user` ;
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `login` VARCHAR(100) NOT NULL,
+  `password` CHAR(40) NOT NULL,
+  `role` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
