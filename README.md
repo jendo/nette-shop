@@ -1,2 +1,2 @@
-Shop - online-kabelkly.com using Nette FW
-=========================================
+Shop - using Nette FW
+=====================
