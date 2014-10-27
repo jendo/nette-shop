@@ -26,10 +26,11 @@ nette:
 
 
 services:
-	- App\Model\UserManager
+	userManager: App\Model\UserManager
 	- App\RouterFactory
 	categoryManager: App\Model\CategoryManager
 	router: @App\RouterFactory::createRouter
+	authenticator: Core\Auth\Authenticate\Authenticator
 
 dibi:
 	driver: postgre
