@@ -12,8 +12,11 @@ class DefaultPresenter extends BasePresenter
 
 	public function createComponentLogInForm($name)
 	{
-		$form = new \Components\BaseFormComponent(function($parent,$name) {
-							return new \Forms\LogInForm($parent,$name);
+		$user = $this->getUser();
+		$form = new \Components\BaseFormComponent(function($parent,$name) use($user) {
+							$loginForm = new \Forms\LogInForm($parent,$name);
+							$loginForm->addUserObject($user);
+							return $loginForm;
 						}, $this, $name);
 		$form->directRender = false;
 		return $form;
