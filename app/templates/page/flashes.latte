@@ -1,0 +1,9 @@
+<div class="{$target}">
+	<ul n:inner-foreach="$flashes as $flash" n:if="$flashes">
+	{if is_scalar($flash)}
+		<li class="flash error">{$flash}</li>
+	{else}
+		<li class="flash {$flash->type}">{$flash->message}</li>
+	{/if}
+	</ul>
+</div>

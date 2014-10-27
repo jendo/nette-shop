@@ -26,7 +26,7 @@ abstract class BaseComponent extends Control
 		$template = parent::createTemplate($class);
 		$template->setFile($this->getTemplateFileName());
 		//Templates\TemplateHelpers::registerTemplates($template);
-		//Templates\TemplateVars::setVars($template);
+		\Application\Templates\TemplateVars::setVars($template);
 		return $template;
 	}
 

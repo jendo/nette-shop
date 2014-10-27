@@ -1,9 +1,7 @@
 {form form class => "form-log-in form-horizontal" }
 
-{*
-{var $target = $form->getFormMsgTarget()}
-{include "$dir/page/flashes.latte", flashes => $form->errors, target => $target}
-*}
+{*{var $target = $form->getFormMsgTarget()}*}
+{include "$tplDir/page/flashes.latte", flashes => $form->errors, target => ''}
 
 <div class="control-group">
 	{label email class => "control-label"}{/label}
