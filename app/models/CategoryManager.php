@@ -2,7 +2,9 @@
 
 namespace App\Model;
 
-class CategoryManager
+use Nette;
+
+class CategoryManager extends Nette\Object
 {
 
 	/** @var \DibiConnection */
@@ -15,7 +17,7 @@ class CategoryManager
 
 	public function findAll()
 	{
-		return $this->dibi->query('SELECT * FROM categories ORDER BY `order`')->fetchAll();
+		return $this->dibi->query('SELECT * FROM category ORDER BY `order`')->fetchAll();
 	}
 
 }
