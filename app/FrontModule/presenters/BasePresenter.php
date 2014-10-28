@@ -2,12 +2,10 @@
 
 namespace App\FrontModule\Presenters;
 
-use Nette;
-
 /**
  * Base presenter for all application presenters.
  */
-abstract class BasePresenter extends Nette\Application\UI\Presenter
+abstract class BasePresenter extends \BasePresenter
 {
 
 	/** @var \App\Model\CategoryManager  */
@@ -16,7 +14,6 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	protected function beforeRender()
 	{
 		parent::beforeRender();
-		\Application\Templates\TemplateVars::setVars($this->template);
 		$categories = $this->categoryManager->findAll();
 		$this->template->navig = $categories;
 	}
