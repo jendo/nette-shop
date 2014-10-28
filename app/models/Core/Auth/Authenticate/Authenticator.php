@@ -28,12 +28,19 @@ final class Authenticator extends Nette\Object implements NS\IAuthenticator
 	public function authenticate(array $credentials)
 	{
 		$userName = $credentials[self::USERNAME];
-		$pass = $credentials[self::PASSWORD];
+		$password = $credentials[self::PASSWORD];
+		$user = $this->userManager->findUser($userName);
 		
-		$row = false;
-		if (!$row) {
-				throw new NS\AuthenticationException('User not found.');
+		if (!$user) {
+				throw new NS\AuthenticationException('User not found.',self::IDENTITY_NOT_FOUND);
 		}
+		
+		if (NS\Passwords::verify($password, $user->password)) {
+				throw new NS\AuthenticationException('Invalid password.',self::INVALID_CREDENTIAL);
+		}
+		// For security reason we remove password from user
+		unset($user->password);
+		return new NS\Identity($user->id, $user->role);
 		
 	}	
 }

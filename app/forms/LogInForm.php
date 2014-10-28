@@ -22,8 +22,8 @@ final class LogInForm extends BaseForm
 		$this->setMethod('POST');
 
 		// Text inpout -  email
-		$textControls[] = $this->addText('email', 'Email')
-						->setAttribute('placeholder', 'Email');
+		$textControls[] = $this->addText('login', 'Login')
+						->setAttribute('placeholder', 'Login');
 						//->addRule(\Nette\Forms\Form::EMAIL, 'Zadali ste neplatný email!');
 						//Custom validator testing
 						//->addRule($this->getCustomValidtorsClassName() . CustomValidators::IS_DIVISIBLE,'First number must be %d multiple', 2);
@@ -58,9 +58,13 @@ final class LogInForm extends BaseForm
 	{
 		try {
 			$values = $form->getValues();
-			$this->user->login($values['email'], $values['pass']);
+			//$this->user->setExpiration('+ 400 minutes', true);
+			$this->user->login($values['login'], $values['pass']);
+			//nasledne redirect
+			$this->getPresenter()->redirect(':Front:Homepage:default');
+			
 		} catch (\Nette\Security\AuthenticationException $e) {
-			$form->addError('asdsadasd');
+			$form->addError($e->getMessage());
 		}
 	}
 
