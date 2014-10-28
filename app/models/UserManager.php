@@ -7,7 +7,18 @@ use Nette;
 /**
  * Users management.
  */
-class UserManager extends Nette\Object
+final class UserManager extends \Core\Base\BaseManager
 {
-
+	
+	/**
+	 * Manager name
+	 *
+	 * @var string
+	 */
+	const NAME = 'user';
+	
+	public function getName()
+	{
+		return self::NAME;
+	}	
 }

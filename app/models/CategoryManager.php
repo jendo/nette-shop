@@ -4,20 +4,24 @@ namespace App\Model;
 
 use Nette;
 
-class CategoryManager extends Nette\Object
+final class CategoryManager extends \Core\Base\BaseManager
 {
-
-	/** @var \DibiConnection */
-	private $dibi;
-
-	public function __construct(\DibiConnection $dibi)
-	{
-		$this->dibi = $dibi;
-	}
+	
+	/**
+	 * Manager name
+	 *
+	 * @var string
+	 */
+	const NAME = 'category';
 
 	public function findAll()
 	{
-		return $this->dibi->query('SELECT * FROM category ORDER BY `order`')->fetchAll();
+		return $this->dibi()->query('SELECT * FROM category ORDER BY `order`')->fetchAll();
+	}
+
+	public function getName()
+	{
+		self::NAME;
 	}
 
 }
