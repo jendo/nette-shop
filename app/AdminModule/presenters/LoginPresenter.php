@@ -5,9 +5,11 @@ namespace App\AdminModule\Presenters;
 use Nette;
 
 /**
- * Homepage presenter.
+ * Login presenter for Admin module
+ *
+ * @author Michal  Jenis <jenis.michal@gmail.com>
  */
-class DefaultPresenter extends BasePresenter
+class LoginPresenter extends BasePresenter
 {
 
 	public function createComponentLogInForm($name)
