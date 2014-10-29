@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS `user` ;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(100) NOT NULL,
-  `password` CHAR(40) NOT NULL,
+  `password` CHAR(60) NOT NULL,
   `role` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

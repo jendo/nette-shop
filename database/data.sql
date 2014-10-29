@@ -6,6 +6,6 @@ INSERT INTO `category` (`id`, `parent`, `name`, `active`, `order`) VALUES
 (4, NULL, 'Akciové kabelky', 1, 4);
 
 
-INSERT INTO `user` (`login`, `password`, `role`) VALUES
-('admin', sha1('admin'), 'admin'),
-('editor', sha1('editor'), 'editor');
+INSERT INTO `user` (`id`, `login`, `password`, `role`) VALUES
+(1, 'admin', '$2y$10$o2Enq2eAHuUIGa/0maYOYuJ9XaKijqCHj0Teut5JkmuDC9wl4RNW6', 'admin'),
+(2, 'editor', '$2y$10$abCUNABTzq1aGPJa.Th36uZR0yd9.H818p943SnoBV0Yjc33lqXvu', 'editor');
