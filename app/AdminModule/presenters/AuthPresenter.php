@@ -9,7 +9,7 @@ use Nette;
  *
  * @author Michal  Jenis <jenis.michal@gmail.com>
  */
-class LoginPresenter extends BasePresenter
+class AuthPresenter extends BasePresenter
 {
 
 	public function createComponentLogInForm($name)
@@ -22,6 +22,19 @@ class LoginPresenter extends BasePresenter
 						}, $this, $name);
 		$form->directRender = false;
 		return $form;
+	}
+
+	/**
+	 * Logout action
+	 *
+	 * @return void
+	 */
+	public function actionLogout()
+	{
+		$clearIdentity = false;
+		$this->getUser()->logout($clearIdentity);
+		$this->flashMessage('You have been logged out.');
+		$this->redirect('Auth:login');
 	}
 
 }
