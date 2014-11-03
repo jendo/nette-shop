@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Presenters;
+
+use Nette;
+
 /**
  * Base presenter for whole application
  */
