@@ -1,4 +1,9 @@
-<div class="{$target}">
+<script type="text/javascript">
+	Nette.formMsgTarget.name = {$target};
+	Nette.formMsgTarget.type = 'class';
+</script>
+
+<div class="{$target} ">
 	<ul n:inner-foreach="$flashes as $flash" n:if="$flashes">
 	{if is_scalar($flash)}
 		<li class="flash error">{$flash}</li>

@@ -83,4 +83,11 @@ abstract class BaseForm extends Nette\Application\UI\Form
 	 */
 	abstract public function processError($form);
 
+	/**
+	 * Get name of div id or class for form messages
+	 *
+	 * @return string
+	 */
+	abstract public function getMsgTarget();
+
 }
