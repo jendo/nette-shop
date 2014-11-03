@@ -59,18 +59,7 @@ final class LogInForm extends BaseForm
 
 	public function processForm($form)
 	{
-		try {
-			$values = $form->getValues();
-			// User will be automaticly logout after 1 hour
-			// or when close the browser (TRUE)
-			$this->user->setExpiration('60 minutes', FALSE);
-			$this->user->login($values['login'], $values['pass']);
-			// Redirect to dashboard
-			$this->getPresenter()->redirect(':Admin:Dashboard:default');
-
-		} catch (\Nette\Security\AuthenticationException $e) {
-			$form->addError($e->getMessage());
-		}
+		
 	}
 
 	public function formSubmitted($form)
