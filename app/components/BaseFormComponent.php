@@ -24,6 +24,13 @@ final class BaseFormComponent extends BaseComponent
 	public $directRender = false;
 
 	/**
+	 * Function proceed after form submit
+	 *
+	 * @var array
+	 */
+	public $onSuccess;
+
+	/**
 	 * Constructor
 	 *
 	 * @param \Closure $formFactory
@@ -68,7 +75,20 @@ final class BaseFormComponent extends BaseComponent
 	{
 		$formFactory = $this->formFactory;
 		$form = $formFactory($this, $name);
+		// Sometimes its usefull to have call back outside form in presneter
+		$form->onSuccess[] = callback($this, 'processFormInPresneter');
 		return $form;
+	}
+
+	/**
+	 * Submit form
+	 *
+	 * @param Forms\BaseForm $form
+	 * @return void
+	 */
+	public function processFormInPresneter( \Forms\BaseForm $form )
+	{
+		$this->onSuccess($this, $form);
 	}
 
 	/**
