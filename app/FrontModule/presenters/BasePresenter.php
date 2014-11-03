@@ -5,7 +5,7 @@ namespace App\FrontModule\Presenters;
 /**
  * Base presenter for all application presenters.
  */
-abstract class BasePresenter extends \BasePresenter
+abstract class BasePresenter extends \App\Presenters\BasePresenter
 {
 
 	/** @var \App\Model\CategoryManager  */
