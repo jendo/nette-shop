@@ -23,8 +23,8 @@ class RouterFactory
 
 		$router[] = new Route('admin/<presenter>/<action>/<id>', array(
         'module' => 'Admin',
-        'presenter' => 'Auth',
-        'action' => 'login',
+        'presenter' => 'Dashboard',
+        'action' => 'default',
         'id' => NULL,
     ));
 
