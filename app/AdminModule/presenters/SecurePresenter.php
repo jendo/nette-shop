@@ -18,7 +18,7 @@ class SecurePresenter extends BasePresenter
 
 		// Check if user is logged in
 		if (!$this->getUser()->isLoggedIn()) {
-			$this->redirect('Login:default');
+			$this->redirect(':Admin:Auth:login');
 		}
 
 	}
