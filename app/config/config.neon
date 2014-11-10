@@ -5,7 +5,7 @@
 # http://nette.org/security-warning
 #
 parameters:
-	frontAppDir: %appDir%\FrontModule
+	frontAppDir: %appDir%/FrontModule
 	global:
 		price:
 			decimals: 2
