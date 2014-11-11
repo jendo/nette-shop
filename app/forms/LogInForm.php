@@ -32,12 +32,16 @@ final class LogInForm extends BaseForm
 						//->addRule($this->getCustomValidtorsClassName() . CustomValidators::IS_DIVISIBLE,'First number must be %d multiple', 2);
 
 		// Text input - password
-		$textControls[] = $this->addPassword('pass', 'Password')
-						->setAttribute('placeholder', 'Password');
+		$textControls[] = $this->addPassword('pass', 'Heslo')
+						->setAttribute('placeholder', 'Heslo');
 						//->addRule(\Nette\Forms\Form::FILLED, 'Prosím vyplňte vyznačené pole.');
 
+
+		//CSRF protection
+		$this->addProtection();
+
 		// Submit button
-		$submit = $this->addSubmit('signup', 'Log in');
+		$submit = $this->addSubmit('signup', 'Prihlásiť');
 	}
 
 	/**
@@ -66,7 +70,7 @@ final class LogInForm extends BaseForm
 			if (empty($value)) {
 				$this->presenter->payload->target['class'] = $this->getMsgTarget();
 				$this->presenter->payload->focus['name'] = $key;
-				$form->addError('Please fill in all mandatory fields.');
+				$form->addError('Prosím vyplňte všetky polia');
 				$this->presenter->invalidateControl('loginFormSnippet');
 				return false;
 			}

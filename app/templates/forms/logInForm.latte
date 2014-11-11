@@ -1,7 +1,7 @@
 {form form class => "form-log-in " }
 	{var $target = $form->getMsgTarget()}
 
-	<h2 class="form-signin-heading">Please sign in</h2>
+	<h2 class="form-signin-heading">{_ 'Prihláste sa prosím'}</h2>
 	{include "$tplDir/page/flashes.latte", flashes => $form->errors, target => $target}
 
 	<div class="control-group">
