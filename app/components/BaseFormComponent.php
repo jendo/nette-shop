@@ -101,6 +101,21 @@ final class BaseFormComponent extends BaseComponent
 	}
 
 	/**
+	 * Set translator to actual form
+	 * All text form script (NOT on template) will be translated
+	 *
+	 * @param \LiveTranslator\Translator $translator
+	 * @return type
+	 */
+	public function setTranslator(\LiveTranslator\Translator  $translator)
+	{
+		$args = array($translator);
+		// Call on ACTUAL FORM method set translator with param : \LiveTranslator\Translator
+		return call_user_func_array(callback($this['form'], 'setTranslator'), $args);
+	}
+
+
+	/**
 	 * Renders form.
 	 * @return void
 	 */

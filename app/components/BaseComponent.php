@@ -9,11 +9,23 @@ abstract class BaseComponent extends Control
 {
 
 	/**
+	 *
+	 * @var \LiveTranslator\Translator
+	 */
+	public $translator;
+
+	/**
 	 * Before render event
 	 *
 	 * @var event
 	 */
 	public $onBeforeRender;
+
+	public function __construct(Nette\ComponentModel\IContainer $parent = NULL, $name = NULL)
+	{
+		parent::__construct($parent, $name);
+		$this->translator =  $this->getPresenter()->getTranslator();
+	}
 
 	/**
 	 * Set's own templates
@@ -24,6 +36,9 @@ abstract class BaseComponent extends Control
 	protected function createTemplate($class = NULL)
 	{
 		$template = parent::createTemplate($class);
+		// Add tranalstor to all components templates
+		$template->setTranslator($this->translator);
+		// Set own template
 		$template->setFile($this->getTemplateFileName());
 		//Templates\TemplateHelpers::registerTemplates($template);
 		\Application\Templates\TemplateVars::setVars($template);
