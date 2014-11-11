@@ -31,12 +31,15 @@ class AuthPresenter extends BasePresenter
 			$values = $form->getValues();
 			// User will be automaticly logout after 1 hour
 			// or when close the browser (TRUE)
-			$this->user->setExpiration('60 minutes', FALSE);
+			$this->user->setExpiration('60 minutes', TRUE);
 			$this->user->login($values['login'], $values['pass']);
 			// Redirect to dashboard
 			$this->redirect(':Admin:Dashboard:default');
 		} catch (\Nette\Security\AuthenticationException $e) {
+			$this->presenter->payload->target['class'] = $form->getMsgTarget();
+			//$this->presenter->payload->focus['name'] = $key;
 			$form->addError($e->getMessage());
+			$this->presenter->invalidateControl('loginFormSnippet');
 		}
 	}
 
