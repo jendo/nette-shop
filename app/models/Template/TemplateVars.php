@@ -47,5 +47,6 @@ class TemplateVars
 		//$template->dir = Nette\Environment::getVariable('appDir') . '/templates/';
 		$template->tplDir = Nette\Environment::getVariable('appDir') .  '/templates/';
 		$template->tplFrontDir = Nette\Environment::getVariable('frontAppDir') . '/templates/';
+		$template->storeName = Nette\Environment::getVariable('storeName');
 	}
 }
