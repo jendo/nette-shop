@@ -4,7 +4,9 @@
 		<div class="container">
 			<ul class="nav">
 						{foreach $navig as $category}
-						<li class="{first}active{/first}" ><a  href="#">{_ $category->name}</a></li>
+						<li class=" {ifCurrent :Front:Category:show $category->id,$category->webname}active{/ifCurrent}" >
+							<a n:href=":Front:Category:show $category->id,$category->webname " >{_ $category->name}</a>
+						</li>
 						{/foreach}
 			</ul>
 		</div>
