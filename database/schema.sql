@@ -10,8 +10,9 @@ DROP TABLE IF EXISTS `category` ;
 
 CREATE TABLE IF NOT EXISTS `category` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `parent` INT NULL DEFAULT NULL,
+  `parent` INT NULL,
   `name` VARCHAR(100) NOT NULL,
+  `webname` VARCHAR(100) NOT NULL,
   `active` SMALLINT NOT NULL DEFAULT 1,
   `order` SMALLINT NOT NULL,
   PRIMARY KEY (`id`),

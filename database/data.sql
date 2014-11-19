@@ -1,9 +1,10 @@
 
-INSERT INTO `category` (`id`, `parent`, `name`, `active`, `order`) VALUES
-(1, NULL, 'Nová kolekcia ', 1, 1),
-(2, NULL, 'Elegantné kabelky ', 1, 2),
-(3, NULL, 'Crossbody kableky ', 1, 3),
-(4, NULL, 'Akciové kabelky', 1, 4);
+INSERT INTO `category` (`id`, `parent`, `name`, `webname`, `active`, `order`) VALUES
+(1, NULL, 'Nová kolekcia ', 'nova-kolekcia', 1, 1),
+(2, NULL, 'Elegantné kabelky ', 'elegantne-kabelky', 1, 2),
+(3, NULL, 'Crossbody kableky ', 'crossbody-kableky', 1, 3),
+(4, NULL, 'Akciové kabelky', 'akciove-kabelky', 1, 4);
+
 
 
 INSERT INTO `user` (`id`, `login`, `password`, `role`) VALUES
