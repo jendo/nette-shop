@@ -5,6 +5,7 @@
 # http://nette.org/security-warning
 #
 parameters:
+	storeName: 'Online-kabelky.sk'
 	defaultLang: sk
 	frontAppDir: %appDir%/FrontModule
 	global:
