@@ -12,6 +12,13 @@ abstract class BaseForm extends Nette\Application\UI\Form
 {
 
 	/**
+	 * Object manager store
+	 *
+	 * @var Applicaion\Component\ManagerStore
+	 */
+	private $managerStore;
+
+	/**
 	 * Custom validator full class name with namespace
 	 *
 	 * @var string
@@ -19,10 +26,11 @@ abstract class BaseForm extends Nette\Application\UI\Form
 	private $customValidtorsClassName;
 
 
-	public function __construct(Nette\ComponentModel\IContainer $parent = NULL, $name = NULL)
+	public function __construct(\Core\Base\BaseManager $manager = null,Nette\ComponentModel\IContainer $parent = NULL, $name = NULL)
 	{
 		parent::__construct($parent, $name);
 		$this->customValidtorsClassName = \Application\Forms\CustomValidators::getClassName();
+		$this->managerStore = $this->createManagerStore($manager);
 		$this->init();
 		// From callbacks
 		$this->onValidate[] = array($this, 'formValidate');
@@ -44,6 +52,28 @@ abstract class BaseForm extends Nette\Application\UI\Form
 		$class = substr($class, strrpos($class, '\\') + 1);
 		$class = strtolower(substr($class, 0, 1)) . substr($class, 1);
 		return $dir . $class . '.latte';
+	}
+
+	/**
+	 * Creates manager store
+	 *
+	 * @param Core\Base\BaseManager $manager
+	 * @return ManagerStore
+	 */
+	protected function createManagerStore(\Core\Base\BaseManager $manager = null)
+	{
+		return new \Application\Component\ManagerStore($manager);
+	}
+
+	/**
+	 * Gets manager for actual entity (or additional manager)
+	 *
+	 * @param string $ident
+	 * @return Core\Base\BaseManager
+	 */
+	protected function manager($ident = null)
+	{
+		return $this->managerStore->getManager($ident);
 	}
 
 	/**
