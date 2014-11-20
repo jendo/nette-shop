@@ -39,7 +39,7 @@ final class BaseFormComponent extends BaseComponent
 	 */
 	public function __construct(\Closure $formFactory, \Nette\ComponentModel\IContainer $parent = NULL, $name = NULL)
 	{
-		parent::__construct($parent, $name);
+		parent::__construct(null, $parent, $name);
 		$this->formFactory = $formFactory;
 		$this->onBeforeRender[] = array($this, 'beforeRender');
 	}
