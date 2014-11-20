@@ -34,7 +34,7 @@ nette:
 services:
 	userManager: App\Model\UserManager
 	- App\RouterFactory
-	categoryManager: App\Model\CategoryManager
+	mangerFactory: Core\ManagerFactory
 	router: @App\RouterFactory::createRouter
 	authenticator: Core\Auth\Authenticate\Authenticator
 	translatorStorage: LiveTranslator\Storage\File(%appDir%/../localization)

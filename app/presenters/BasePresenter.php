@@ -21,6 +21,9 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	 */
 	public $translator;
 
+	/** @var \Core\ManagerFactory  */
+	private $managerFactory;
+
 	/**
 	 * Connect translator model into presenter
 	 *
@@ -38,6 +41,25 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	public function getTranslator()
 	{
 		return $this->translator;
+	}
+
+	/**
+	 *
+	 * @param \Core\ManagerFactory $managerFactory
+	 */
+	public function injectManagerFactory(\Core\ManagerFactory $managerFactory)
+	{
+		$this->managerFactory = $managerFactory;
+	}
+
+	/**
+	 * Gets manager facotry
+	 *
+	 * @return type
+	 */
+	public function getManagerFactory()
+	{
+		return $this->managerFactory;
 	}
 
 	/**
