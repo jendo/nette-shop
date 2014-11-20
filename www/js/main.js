@@ -24,4 +24,7 @@ Nette.addError = function(elem, message) {
 
 $(function(){
 	//alert(Nette.formMsgTarget);
+
+	$('input[type=file]').bootstrapFileInput();
+
 });
