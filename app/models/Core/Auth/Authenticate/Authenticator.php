@@ -14,22 +14,21 @@ use Nette\Security as NS;
 final class Authenticator extends Nette\Object implements NS\IAuthenticator
 {
 
-	/** @var \DibiConnection */
-	private $dibi;
 
-	/** \App\Model\UserManager */
-	private $userManager;
+	/** @var \Core\ManagerFactory */
+	private $managerFactory;
 
-	public function __construct(\App\Model\UserManager $userManager)
+	public function __construct(\Core\ManagerFactory $managerFactory)
 	{
-		$this->userManager = $userManager;
+		$this->managerFactory = $managerFactory;
 	}
 
 	public function authenticate(array $credentials)
 	{
 		$userName = $credentials[self::USERNAME];
 		$password = $credentials[self::PASSWORD];
-		$user = $this->userManager->findUser($userName);
+		$userManager = $this->managerFactory->user();
+		$user = $userManager->findUser($userName);
 
 		if (!$user) {
 				throw new NS\AuthenticationException('Užívateľ nebol nájdený',self::IDENTITY_NOT_FOUND);

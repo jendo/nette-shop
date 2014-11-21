@@ -6,7 +6,7 @@ namespace Core;
  * Factory for other managers
  *
  * @package Core
- * @author Jan Pěček <pecek@internettrading.cz>
+ * @author Michal Jenis <jenis.michal@gmail.com>
  */
 class ManagerFactory extends \Core\Base\BaseFactory
 {
@@ -42,6 +42,19 @@ class ManagerFactory extends \Core\Base\BaseFactory
 		$dibi = $this->dibi;
 		return $this->factory(__FUNCTION__, function() use($dibi) {
 			return new \App\Model\CategoryManager($dibi);
+		});
+	}
+
+	/**
+	 * Returns User manager
+	 *
+	 * @return \App\Model\UserManager
+	 */
+	public function user()
+	{
+		$dibi = $this->dibi;
+		return $this->factory(__FUNCTION__, function() use($dibi) {
+			return new \App\Model\UserManager($dibi);
 		});
 	}
 
