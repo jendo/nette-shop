@@ -21,7 +21,9 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	 */
 	public $translator;
 
-	/** @var \Core\ManagerFactory  */
+	/**
+	 * @var \Core\ManagerFactory
+	 */
 	private $managerFactory;
 
 	/**
@@ -30,6 +32,21 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	 * @var string
 	 */
 	public $mainUplodaDir;
+
+	/**
+	 * Alert succes class
+	 */
+	const ALERT_SUCCESS = 'alert-success';
+
+	/**
+	 * Alert info class
+	 */
+	const ALERT_INFO = 'alert-info';
+
+	/**
+	 * Alert error class
+	 */
+	const ALERT_ERROR = 'alert-error';
 
 	/**
 	 * Connect translator model into presenter
