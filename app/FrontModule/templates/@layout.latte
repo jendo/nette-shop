@@ -12,6 +12,8 @@
 	<script src="{$basePath}/js/libs/jquery/jquery.js"></script>
 	<script src="{$basePath}/js/libs/nette/netteForms.js"></script>
 	<script src="{$basePath}/js/libs/bootstrap/bootstrap.file-input.js"></script>
+	<script src="{$basePath}/js/libs/bootstrap/bootstrap-alert.js"></script>
+	<script src="{$basePath}/js/libs/bootstrap/bootstrap-transition.js"></script>
 	<script src="{$basePath}/js/main.js"></script>
 
 	{block head}{/block}
@@ -21,17 +23,21 @@
 
 	<div class="container">
 
-		{* Global flash messages *}
-		<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
-
 		{* Main navigation *}
 		{include "$tplFrontDir/block/menu.latte"}
 
+		{* Global flash messages *}
+		<div n:foreach="$flashes as $flash" class="alert {$flash->type} fade in">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			{$flash->message}
+		</div>
+
+		{* Main content*}
 		{include content}
 
-	</div>
+		{block scripts}
+		{/block}
 
-	{block scripts}
-	{/block}
+	</div>
 </body>
 </html>
