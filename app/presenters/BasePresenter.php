@@ -25,6 +25,13 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	private $managerFactory;
 
 	/**
+	 * Main upload dir
+	 *
+	 * @var string
+	 */
+	public $mainUplodaDir;
+
+	/**
 	 * Connect translator model into presenter
 	 *
 	 * @param \LiveTranslator\Translator $translator
@@ -42,6 +49,17 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	{
 		return $this->translator;
 	}
+
+	/**
+	 * Gets main upload dir
+	 *
+	 * @return string
+	 */
+	public function getMainUplodaDir()
+	{
+		return $this->mainUplodaDir;
+	}
+
 
 	/**
 	 *
@@ -69,6 +87,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	{
 		parent::startup();
 		$this->translator->setCurrentLang($this->lang);
+		$this->mainUplodaDir = Nette\Environment::getVariable('uploadDir');
 	}
 
 	protected function beforeRender()

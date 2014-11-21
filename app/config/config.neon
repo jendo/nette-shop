@@ -8,6 +8,7 @@ parameters:
 	storeName: 'Online-kabelky.sk'
 	defaultLang: sk
 	frontAppDir: %appDir%/FrontModule
+	uploadDir: %appDir%/../uploads
 	global:
 		price:
 			decimals: 2
