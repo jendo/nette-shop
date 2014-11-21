@@ -15,8 +15,9 @@ class AuthPresenter extends BasePresenter
 	public function createComponentLogInForm($name)
 	{
 		$user = $this->getUser();
-		$form = new \Components\BaseFormComponent(function($parent,$name) use($user) {
-							$loginForm = new \Forms\LogInForm($parent,$name);
+		$manager = null;
+		$form = new \Components\BaseFormComponent(function($parent,$name) use($user,$manager) {
+							$loginForm = new \Forms\LogInForm($manager,$parent,$name);
 							$loginForm->addUserObject($user);
 							return $loginForm;
 						}, $this, $name);
