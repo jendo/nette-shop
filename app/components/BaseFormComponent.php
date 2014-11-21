@@ -6,7 +6,7 @@ namespace Components;
  * Zakladna komponenta pre vsetky formulare
  * Nastavuje pre vsetky formualre vlastne templaty
  */
-final class BaseFormComponent extends BaseComponent
+class BaseFormComponent extends BaseComponent
 {
 
 	/**
