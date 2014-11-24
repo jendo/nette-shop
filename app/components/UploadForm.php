@@ -25,7 +25,7 @@ class UploadForm extends \Components\BaseFormComponent
 	 */
 	private $fileManager;
 
-	public function __construct(\Closure $formFactory, \App\Model\FileManager $manager, \Nette\ComponentModel\IContainer $parent = NULL, $name = NULL)
+	public function __construct(\Closure $formFactory, \App\Model\File\FileManager $manager, \Nette\ComponentModel\IContainer $parent = NULL, $name = NULL)
 	{
 		parent::__construct($formFactory, $parent, $name);
 		$this->fileManager = $manager;
@@ -35,6 +35,7 @@ class UploadForm extends \Components\BaseFormComponent
 	 * Save uploaded file
 	 *
 	 * @param \Nette\Http\FileUpload $image
+	 * @return \App\Model\File\File object or null
 	 */
 	public function saveFile(\Nette\Http\FileUpload $image)
 	{
@@ -70,7 +71,15 @@ class UploadForm extends \Components\BaseFormComponent
 			$image->move($imageFilename);
 			@chmod($imageFilename, 0775);
 
+			$file = new \App\Model\File\File();
+			$file->setFilename($imageBaseFilename);
+			$file->setFileTypeId(\App\Model\File\FileManager::DEFAULT_FILE_TYPE);
+			// Save file to db
+			$fileId = $this->fileManager->add($file);
+			$file->setId($fileId);
+			return $file;
 		}
+		return NULL;
 	}
 
 	/**
