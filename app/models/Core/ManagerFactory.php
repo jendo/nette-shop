@@ -58,4 +58,15 @@ class ManagerFactory extends \Core\Base\BaseFactory
 		});
 	}
 
+	/**
+	 * Retrusn trip manager
+	 */
+	public function trip()
+	{
+		$dibi = $this->dibi;
+		return $this->factory(__FUNCTION__, function() use($dibi) {
+			return new \App\Model\Trip\TripManager($dibi);
+		});
+	}
+
 }
