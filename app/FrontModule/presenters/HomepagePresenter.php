@@ -35,19 +35,4 @@ class HomepagePresenter extends BasePresenter
 		return $form;
 	}
 
-	/**
-	 *
-	 * @param string $name
-	 * @return \Components\BaseFormComponent
-	 */
-	public function createComponentCreateTripForm($name)
-	{
-		$manager = $this->getManagerFactory()->file();
-		$form = new \Components\BaseFormComponent(function($parent,$name) use($manager) {
-							return new \Forms\CreateTripForm($manager, $parent, $name);
-						}, $this, $name);
-		$form->directRender = false;
-		return $form;
-	}
-
 }
