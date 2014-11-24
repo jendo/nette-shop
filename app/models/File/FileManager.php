@@ -34,11 +34,15 @@ final class FileManager extends \Core\Base\BaseManager
 	const NAME = 'file';
 
 
+	/**
+	 * Insert file into database
+	 *
+	 * @param \App\Model\File\File $file
+	 * @return int Last inserted id
+	 */
 	public function add(File $file)
 	{
-
-		//$this->dibi()->insert($this->getName(), $file->toArray())->execute();
-
+		return $this->dibi()->insert($this->getName(), $file->toArray())->execute(\dibi::IDENTIFIER);
 	}
 
 	/**
