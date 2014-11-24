@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\File;
 
 use Nette;
 
@@ -10,13 +10,36 @@ use Nette;
 final class FileManager extends \Core\Base\BaseManager
 {
 
+	const DEFAULT_FILE_TYPE = 1;
+
+	/**
+	 * Filename column
+	 *
+	 * @var string
+	 */
+	const COLUMN_FILENAME = 'filename';
+
+	/**
+	 * Filename column
+	 *
+	 * @var string
+	 */
+	const COLUMN_FILE_TYPE = 'file_type_id';
+
 	/**
 	 * Manager name
 	 *
 	 * @var string
 	 */
-	const NAME = 'file.file';
+	const NAME = 'file';
 
+
+	public function add(File $file)
+	{
+
+		//$this->dibi()->insert($this->getName(), $file->toArray())->execute();
+
+	}
 
 	/**
 	 * Generate file name for storing image
