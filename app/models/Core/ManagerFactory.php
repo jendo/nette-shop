@@ -69,4 +69,17 @@ class ManagerFactory extends \Core\Base\BaseFactory
 		});
 	}
 
+	/**
+	 * Retruns product manager
+	 *
+	 * @return \App\Model\Product\ProductManager
+	 */
+	public function product()
+	{
+		$dibi = $this->dibi;
+		return $this->factory(__FUNCTION__, function() use($dibi) {
+			return new \App\Model\Product\ProductManager($dibi);
+		});
+	}
+
 }
