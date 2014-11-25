@@ -85,6 +85,75 @@ ENGINE = InnoDB
 COMMENT = 'Files storage';
 
 
+-- -----------------------------------------------------
+-- Table `product`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `product` ;
+
+CREATE TABLE IF NOT EXISTS `product` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT 'Product ID',
+  `name` VARCHAR(150) NOT NULL COMMENT 'Product name',
+  `webname` VARCHAR(150) NOT NULL COMMENT 'Name in URL',
+  `price` DECIMAL(10,4) NOT NULL COMMENT 'Price without DPH',
+  `description` TEXT NULL COMMENT 'Product description',
+  `created` DATETIME NULL DEFAULT now() COMMENT 'Created date',
+  `modified` DATETIME NULL COMMENT 'Last modified date',
+  `deleted` DATETIME NULL COMMENT 'Deteled date',
+  `new` TINYINT NOT NULL DEFAULT 0 COMMENT 'Is product new ?',
+  `top` TINYINT NOT NULL DEFAULT 0 COMMENT 'Is top product ?',
+  `avaible` TINYINT NOT NULL DEFAULT 1 COMMENT 'Is avaible ?',
+  `active` TINYINT NOT NULL DEFAULT 1 COMMENT 'Is active ?',
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+COMMENT = 'Products table';
+
+
+-- -----------------------------------------------------
+-- Table `product_category`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `product_category` ;
+
+CREATE TABLE IF NOT EXISTS `product_category` (
+  `product_id` INT NOT NULL,
+  `category_id` INT NOT NULL,
+  PRIMARY KEY (`product_id`, `category_id`),
+  INDEX `b_idx` (`category_id` ASC),
+  CONSTRAINT `fk_product`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `product` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_category`
+    FOREIGN KEY (`category_id`)
+    REFERENCES `category` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `product_file`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `product_file` ;
+
+CREATE TABLE IF NOT EXISTS `product_file` (
+  `product_id` INT NOT NULL COMMENT 'Product ID',
+  `file_id` INT NOT NULL COMMENT 'File ID',
+  PRIMARY KEY (`product_id`, `file_id`),
+  INDEX `b_idx` (`file_id` ASC),
+  CONSTRAINT `fk_product_file_product`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `product` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_product_file_file`
+    FOREIGN KEY (`file_id`)
+    REFERENCES `file` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
