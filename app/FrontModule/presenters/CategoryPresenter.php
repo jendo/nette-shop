@@ -12,6 +12,13 @@ class CategoryPresenter extends BasePresenter
 	 */
 	private $category;
 
+	/**
+	 * Products of current category
+	 *
+	 * @var array
+	 */
+	private $products;
+
 
 	/**
 	 * Show category
@@ -40,11 +47,15 @@ class CategoryPresenter extends BasePresenter
 			$this->redirect(301,'Category:show', array('id' => $id, 'name' => $this->category->webname));
 		}
 
+		// GEt products of category
+		$productManager = $this->getManagerFactory()->product();
+		$this->products = $productManager->findAllByCategory($this->category->id);
 	}
 
 	public function renderShow()
 	{
 		$this->template->category = $this->category;
+		$this->template->products = $this->products;
 	}
 
 }
