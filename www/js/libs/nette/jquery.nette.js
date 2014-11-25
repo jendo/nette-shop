@@ -31,8 +31,6 @@ jQuery.extend({
 
 		success: function(payload) {
 
-			$('input[name="login"]').hide();
-
 			//set target for messages
 			if (payload.target) {
 				if (payload.target.class !== 'undefined') {
