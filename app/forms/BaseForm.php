@@ -77,6 +77,18 @@ abstract class BaseForm extends Nette\Application\UI\Form
 	}
 
 	/**
+	 * Adds manager to object
+	 *
+	 * @param Core\Base\BaseManager $manager
+	 * @return BaseFrom
+	 */
+	public function addManager(\Core\Base\BaseManager $manager)
+	{
+		$this->managerStore->addManager($manager);
+		return $this;
+	}
+
+	/**
 	 * Get custom validators class name
 	 *
 	 * @return string
