@@ -50,13 +50,14 @@ class TripManager extends \Core\Base\BaseManager
 	 * Insert trip into database
 	 *
 	 * @param \App\Model\Trip\Trip $trip
-	 * @return int Last inserted id
+	 * @return \App\Model\Trip\Trip $trip Inserterd trip
 	 */
 	public function add(Trip $trip)
 	{
-		return $this->dibi()->insert($this->getName(), $trip->toArray())->execute(\dibi::IDENTIFIER);
+		$newTripId = $this->dibi()->insert($this->getName(), $trip->toArray())->execute(\dibi::IDENTIFIER);
+		$trip->setId($newTripId);
+		return $trip;
 	}
-
 
 	public function getName()
 	{

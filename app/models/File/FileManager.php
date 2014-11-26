@@ -46,6 +46,34 @@ final class FileManager extends \Core\Base\BaseManager
 	}
 
 	/**
+	 *
+	 * @param \App\Model\Trip\Trip $trip
+	 * @param \App\Model\File\File $file
+	 * @return boolean
+	 */
+	public function addTripFile(\App\Model\Trip\Trip $trip, File $file)
+	{
+		$table = 'file_trip';
+		$data = array('trip_id' => $trip->getId(), 'file_id' => $file->getId());
+		$this->dibi()->insert($table, $data)->execute();
+		return true;
+	}
+
+	/**
+	 *
+	 * @param \App\Model\File\Trip $trip
+	 * @param array $files
+	 * @return boolean
+	 */
+	public function addTripFiles(\App\Model\Trip\Trip $trip,  array $files)
+	{
+		foreach ($files as $file) {
+			$this->addTripFile($trip, $file);
+		}
+		return true;
+	}
+
+	/**
 	 * Generate file name for storing image
 	 *
 	 * @param string $fileName
