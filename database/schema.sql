@@ -53,7 +53,7 @@ DROP TABLE IF EXISTS `file_type` ;
 CREATE TABLE IF NOT EXISTS `file_type` (
   `id` INT NOT NULL AUTO_INCREMENT COMMENT 'File type ID',
   `name` VARCHAR(50) NOT NULL COMMENT 'Name of file',
-  `direcotry` VARCHAR(150) NOT NULL COMMENT 'Direcotry in file structure',
+  `directory` VARCHAR(150) NOT NULL COMMENT 'Direcotry in file structure',
   `width` INT NULL COMMENT 'Image witdh',
   `height` INT NULL COMMENT 'Image height',
   `isimage` TINYINT(1) NOT NULL DEFAULT true COMMENT 'Is file image',

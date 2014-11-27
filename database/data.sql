@@ -10,3 +10,6 @@ INSERT INTO `category` (`id`, `parent`, `name`, `webname`, `active`, `order`) VA
 INSERT INTO `user` (`id`, `login`, `password`, `role`) VALUES
 (1, 'admin', '$2y$10$o2Enq2eAHuUIGa/0maYOYuJ9XaKijqCHj0Teut5JkmuDC9wl4RNW6', 'admin'),
 (2, 'editor', '$2y$10$abCUNABTzq1aGPJa.Th36uZR0yd9.H818p943SnoBV0Yjc33lqXvu', 'editor');
+
+INSERT INTO `file_type` (`id`, `name`, `directory`, `width`, `height`, `isimage`) VALUES
+(1, 'Default uploaded image', '', 0, 0, 1);
