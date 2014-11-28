@@ -8,7 +8,7 @@ namespace Components;
  * @author Michal Jenis <jenis.michal@gmail.com>
  * @package Components
  */
-class UploadForm extends \Components\BaseFormComponent
+class UploadFormComponent extends FormComponent
 {
 
 	/**
@@ -25,9 +25,10 @@ class UploadForm extends \Components\BaseFormComponent
 	 */
 	private $fileManager;
 
-	public function __construct(\Closure $formFactory, \App\Model\File\FileManager $manager, \Nette\ComponentModel\IContainer $parent = NULL, $name = NULL)
+
+	public function __construct(\App\Model\File\FileManager $manager, \IForm $form, \Nette\ComponentModel\IContainer $parent = NULL, $name = NULL)
 	{
-		parent::__construct($formFactory, $parent, $name);
+		parent::__construct($form, $parent, $name);
 		$this->fileManager = $manager;
 	}
 

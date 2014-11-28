@@ -10,17 +10,7 @@ final class LogInForm extends BaseForm
 
 	const MSG_TARGET = 'error';
 
-	/**
-	 * @var Nette\Security\User
-	 */
-	private $user;
-
-	/*
-	 * Implemented abstract method - creates body of form
-	 *
-	 * @see \Forms\BaseForm
-	 */
-	protected function init()
+	public function init()
 	{
 		$this->setMethod('POST');
 
@@ -44,24 +34,24 @@ final class LogInForm extends BaseForm
 		$submit = $this->addSubmit('signup', 'Prihlásiť');
 	}
 
-	/**
-	 *
-	 */
-	public function addUserObject(\Nette\Security\User $user)
+
+	public function getMsgTarget()
 	{
-		$this->user = $user;
+		return self::MSG_TARGET;
 	}
 
+	public function formSubmitted(\IForm $form)
+	{
 
-	/**
-	 *
-	 * @param LogInForm $form
-	 */
-	public function formValidate($form)
+	}
+
+	public function formValidate(\IForm $form)
 	{
 		// Full control for response
 		// This terminates life cycle of presenter
 		//$this->getPresenter()->sendResponse(new JsonResponse(array('asdasd' => 'asdasd')));
+		//$this->getPresenter()->sendJson($form)
+		//$this->getPresenter()->sendPayload()
 
 		$values = $form->getValues(TRUE);
 
@@ -79,24 +69,14 @@ final class LogInForm extends BaseForm
 		return $form->hasErrors();
 	}
 
-	public function processForm($form)
+	public function processError(\IForm $form)
 	{
 
 	}
 
-	public function formSubmitted($form)
+	public function processForm(\IForm $form)
 	{
 
-	}
-
-	public function processError($form)
-	{
-
-	}
-
-	public function getMsgTarget()
-	{
-		return self::MSG_TARGET;
 	}
 
 }

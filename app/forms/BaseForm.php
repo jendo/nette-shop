@@ -8,7 +8,7 @@ use Nette;
  * Spolocny predok pre vsetky formulare, kotre maju vlastny template a vlastne callbacky na signaly
  * Formular musi dedit od Nette\Application\UI\Form (formular priamo presenteroch) a nie od Nette\Forms\Form ak chceme mat platne valstne callbacky
  */
-abstract class BaseForm extends Nette\Application\UI\Form
+abstract class BaseForm extends Nette\Application\UI\Form implements \IForm
 {
 
 	/**
@@ -25,13 +25,17 @@ abstract class BaseForm extends Nette\Application\UI\Form
 	 */
 	private $customValidtorsClassName;
 
-
-	public function __construct(\Core\Base\BaseManager $manager = null,Nette\ComponentModel\IContainer $parent = NULL, $name = NULL)
+	/**
+	 *
+	 * @param \Core\Base\BaseManager $manager
+	 * @param Nette\ComponentModel\IContainer $parent
+	 * @param type $name
+	 */
+	public function __construct(\Core\Base\BaseManager $manager = null, Nette\ComponentModel\IContainer $parent = NULL, $name = NULL)
 	{
 		parent::__construct($parent, $name);
-		$this->customValidtorsClassName = \Application\Forms\CustomValidators::getClassName();
 		$this->managerStore = $this->createManagerStore($manager);
-		$this->init();
+		$this->customValidtorsClassName = \Application\Forms\CustomValidators::getClassName();
 		// From callbacks
 		$this->onValidate[] = array($this, 'formValidate');
 		$this->onSubmit[] = array($this, 'formSubmitted');
@@ -39,7 +43,7 @@ abstract class BaseForm extends Nette\Application\UI\Form
 		$this->onError[] = array($this, 'processError');
 	}
 
-		/**
+	/**
 	 * Gets template file name
 	 *
 	 * @return string
@@ -89,47 +93,23 @@ abstract class BaseForm extends Nette\Application\UI\Form
 	}
 
 	/**
-	 * Get custom validators class name
-	 *
-	 * @return string
-	 */
-	public function getCustomValidtorsClassName()
-	{
-		return $this->customValidtorsClassName;
-	}
-
-	/**
-	 * Creates form
-	 *
-	 * @return void
-	 */
-	abstract protected function init();
-
-	/**
 	 * Occurs when the form is validated
 	 */
-	abstract public function formValidate($form);
+	abstract public function formValidate(\IForm $form);
 
 	/**
 	 * Occurs when the form is submitted
 	 */
-	abstract public function formSubmitted($form);
+	abstract public function formSubmitted(\IForm $form);
 
 	/**
 	 * Occurs when the form is submitted and successfully validated
 	 */
-	abstract public function processForm($form);
+	abstract public function processForm(\IForm $form);
 
 	/**
 	 * Occurs when the form is submitted and is not valid
 	 */
-	abstract public function processError($form);
-
-	/**
-	 * Get name of div id or class for form messages
-	 *
-	 * @return string
-	 */
-	abstract public function getMsgTarget();
+	abstract public function processError(\IForm $form);
 
 }
