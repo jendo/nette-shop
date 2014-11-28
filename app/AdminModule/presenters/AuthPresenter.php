@@ -14,19 +14,14 @@ class AuthPresenter extends BasePresenter
 
 	public function createComponentLogInForm($name)
 	{
-		$user = $this->getUser();
-		$manager = null;
-		$form = new \Components\BaseFormComponent(function($parent,$name) use($user,$manager) {
-							$loginForm = new \Forms\LogInForm($manager,$parent,$name);
-							$loginForm->addUserObject($user);
-							return $loginForm;
-						}, $this, $name);
-		$form->directRender = false;
-		$form->onSuccess[] = callback($this, 'processFormInPresneter');
-		return $form;
+		$form = new \Forms\LogInForm();
+		$formComponent = new \Components\FormComponent($form, $this, $name);
+		$formComponent->directRender = false;
+		$formComponent->onSuccess[] = callback($this, 'processFormInPresneter');
+		return $formComponent->create();
 	}
 
-	public function processFormInPresneter(\Components\BaseFormComponent $sender, \Forms\LogInForm $form)
+	public function processFormInPresneter(\Components\FormComponent $sender, \Forms\LogInForm $form)
 	{
 		try {
 			$values = $form->getValues();
