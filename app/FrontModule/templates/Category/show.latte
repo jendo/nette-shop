@@ -2,6 +2,9 @@
 {block title}{$category->name}{/block}
 
 {block content}
+
+{control pagination}
+
 	<h1>{$category->name}</h1>
 	{foreach $products as $product}
 		{first 4}<div class="row">{/first}
@@ -11,4 +14,6 @@
 			</div>
 		{last 4}</div>{/last}
 	{/foreach}
+
+
 {/block}

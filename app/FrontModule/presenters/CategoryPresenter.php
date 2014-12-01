@@ -47,9 +47,22 @@ class CategoryPresenter extends BasePresenter
 			$this->redirect(301,'Category:show', array('id' => $id, 'name' => $this->category->webname));
 		}
 
-		// GEt products of category
 		$productManager = $this->getManagerFactory()->product();
-		$this->products = $productManager->findAllByCategory($this->category->id);
+
+		$products = $productManager->findAllByCategoryFluent($this->category->id);
+		/** @var \DibiFluent $products */
+
+		$paginator = $this->getPaginator();
+		$paginator->setItemCount(count($products));
+		$paginator->setItemsPerPage(20);
+
+		// GEt products of category
+		$limit = $paginator->getLength();
+		$offset = $paginator->getOffset();
+		$products->limit($limit);
+		$products->offset($offset);
+		$this->products = $products->fetchAll();
+
 	}
 
 	public function renderShow()

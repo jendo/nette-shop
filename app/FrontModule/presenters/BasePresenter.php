@@ -26,6 +26,35 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
 
 	/**
 	 *
+	 * @param type $name
+	 * @return \Components\Pagination
+	 */
+	public function createComponentPagination($name)
+	{
+		return new \Components\Pagination(null, $this, $name);
+	}
+
+	/**
+	 *
+	 * @return \Components\Pagination
+	 */
+	public function getPagination()
+	{
+		return $this['pagination'];
+	}
+
+	/**
+	 * Get Paginagtor from pagination component
+	 *
+	 * @return \Nette\Utils\Paginator
+	 */
+	public function getPaginator()
+	{
+		return $this->getPagination()->getPaginator();
+	}
+
+		/**
+	 *
 	 * @return \App\Model\CategoryManager
 	 */
 	public function getCategoryManager()
