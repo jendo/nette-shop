@@ -25,6 +25,22 @@ final class ProductManager extends \Core\Base\BaseManager
 			)->fetchAll();
 	}
 
+	/**
+	 *
+	 * @param type $catId
+	 * @return \DibiFluent
+	 */
+	public function findAllByCategoryFluent($catId)
+	{
+		$products = $this->dibi()->select('*')
+						->from($this->getName(),'p')
+						->innerJoin('product_category', 'pc')
+						->on('p.id = pc.product_id')
+						->where('pc.category_id = %i',$catId);
+
+		return $products;
+	}
+
 	public function getName()
 	{
 		return self::NAME;
