@@ -8,7 +8,7 @@ class CategoryPresenter extends BasePresenter
 	/**
 	 * Current category object
 	 *
-	 * @var string
+	 * @var \App\Model\Category\Category
 	 */
 	private $category;
 
@@ -29,9 +29,9 @@ class CategoryPresenter extends BasePresenter
 	public function actionShow($id, $name)
 	{
 		$categoryManager = $this->getCategoryManager();
-		$this->category = $categoryManager->find($id);
+		$categoryDibiObject = $categoryManager->find($id);
 
-		if (FALSE === $this->category) {
+		if (FALSE === $categoryDibiObject) {
 
 			// Set 404 by set new template
 			//$this->setView('notFound');
@@ -42,6 +42,9 @@ class CategoryPresenter extends BasePresenter
 			$code = 404;
 			throw new \Nette\Application\BadRequestException($message, $code);
 		}
+
+		// Initialize object Category
+		$this->category = new \App\Model\Category\Category($categoryDibiObject);
 
 		if ($this->category->webname != $name) {
 			$this->redirect(301,'Category:show', array('id' => $id, 'name' => $this->category->webname));
