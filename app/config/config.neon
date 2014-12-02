@@ -9,6 +9,8 @@ parameters:
 	defaultLang: sk
 	frontAppDir: %appDir%/FrontModule
 	uploadDir: %appDir%/../uploads
+	paginator:
+		itemsPerPage: 8
 	global:
 		price:
 			decimals: 2

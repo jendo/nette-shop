@@ -62,4 +62,15 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
 		return $this->categoryManager;
 	}
 
+	/**
+	 * Gets paginator count of items per page
+	 *
+	 * @return int Number of items per page
+	 */
+	public function getPaginatorItemsPerPage()
+	{
+		$paginator =  \Nette\Environment::getVariable('paginator');
+		return $paginator['itemsPerPage'];
+	}
+
 }

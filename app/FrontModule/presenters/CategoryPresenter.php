@@ -54,7 +54,7 @@ class CategoryPresenter extends BasePresenter
 
 		$paginator = $this->getPaginator();
 		$paginator->setItemCount(count($products));
-		$paginator->setItemsPerPage(20);
+		$paginator->setItemsPerPage($this->getPaginatorItemsPerPage());
 
 		// GEt products of category
 		$limit = $paginator->getLength();
