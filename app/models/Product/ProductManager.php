@@ -4,6 +4,28 @@ namespace App\Model\Product;
 
 final class ProductManager extends \Core\Base\BaseManager
 {
+
+	/**
+	 * Name column
+	 *
+	 * @var string
+	 */
+	const COLUMN_NAME = 'name';
+
+	/**
+	 * Webname column
+	 *
+	 * @var string
+	 */
+	const COLUMN_WEBNANE = 'webname';
+
+	/**
+	 * Filename price
+	 *
+	 * @var float
+	 */
+	const COLUMN_PRICE = 'price';
+
 	/**
 	 * Manager name
 	 *
@@ -13,6 +35,17 @@ final class ProductManager extends \Core\Base\BaseManager
 	const NAME = 'product';
 
 	/**
+	 * Find product
+	 *
+	 * @param id $id
+	 * @return \DibiRow
+	 */
+	public function find($id)
+	{
+		return $this->dibi()->select('*')->from($this->getName())->where(array('id' => $id))->fetch();
+	}
+
+		/**
 	 *
 	 */
 	public function findAllByCategory($catId)
