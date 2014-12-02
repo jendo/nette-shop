@@ -9,7 +9,7 @@
 	{foreach $products as $product}
 		{first 4}<div class="row">{/first}
 			<div class="span3">
-				<h2><a href="#">{$product->name}</a></h2>
+				<h2><a n:href=":Front:Product:show $product->id,$product->webname">{$product->name}</a></h2>
 				<p>{$product->description}</p>
 			</div>
 		{last 4}</div>{/last}
