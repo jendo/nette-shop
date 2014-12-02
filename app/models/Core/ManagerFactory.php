@@ -41,7 +41,7 @@ class ManagerFactory extends \Core\Base\BaseFactory
 	{
 		$dibi = $this->dibi;
 		return $this->factory(__FUNCTION__, function() use($dibi) {
-			return new \App\Model\CategoryManager($dibi);
+			return new \App\Model\Category\CategoryManager($dibi);
 		});
 	}
 
