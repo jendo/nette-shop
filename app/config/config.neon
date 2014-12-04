@@ -11,6 +11,12 @@ parameters:
 	uploadDir: %appDir%/../uploads
 	paginator:
 		itemsPerPage: 8
+	photo:
+			photoDir: 'files/products/'
+			tempPhotoDir: 'files/temp/'
+			listingProperties:
+				width: 210
+				height: 260
 	global:
 		price:
 			decimals: 2
@@ -42,6 +48,7 @@ services:
 	translatorStorage: LiveTranslator\Storage\File(%appDir%/../localization)
 	translator: LiveTranslator\Translator(%defaultLang%)
 	translatorPanel: LiveTranslator\Panel
+	templateHelpers: Application\Templates\TemplateHelpers( %wwwDir%, @httpRequest)
 
 dibi:
 	driver: postgre

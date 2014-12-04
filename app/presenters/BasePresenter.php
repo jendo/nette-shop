@@ -27,6 +27,12 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	private $managerFactory;
 
 	/**
+	 *
+	 * @var \Application\Templates\TemplateHelpers
+	 */
+	private $templateHelpers;
+
+	/**
 	 * Main upload dir
 	 *
 	 * @var string
@@ -99,6 +105,15 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 
 	/**
 	 *
+	 * @param \Application\Templates\TemplateHelpers $templateHelpers
+	 */
+	public function injectTemplateHelpers(\Application\Templates\TemplateHelpers $templateHelpers)
+	{
+		$this->templateHelpers = $templateHelpers;
+	}
+
+	/**
+	 *
 	 */
 	protected function startup()
 	{
@@ -125,6 +140,9 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		$template = parent::createTemplate($class);
 		// Add translator to all templates
 		$template->setTranslator($this->translator);
+		// Register my own template helpers
+		$template->registerHelperLoader(callback($this->templateHelpers, 'loader'));
+
 		return $template;
 	}
 
