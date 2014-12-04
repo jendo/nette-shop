@@ -13,3 +13,6 @@ INSERT INTO `user` (`id`, `login`, `password`, `role`) VALUES
 
 INSERT INTO `file_type` (`id`, `name`, `directory`, `width`, `height`, `isimage`) VALUES
 (1, 'Default uploaded image', '', 0, 0, 1);
+
+INSERT INTO `file` (`id`, `filename`, `file_type_id`, `created`, `modified`, `deleted`) VALUES
+(7, '04859b9b3cb8d7272452ca885e1f6b4d.jpg', 1, '2014-12-04 14:34:06', NULL, NULL);
