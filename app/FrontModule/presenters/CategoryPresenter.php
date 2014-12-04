@@ -29,8 +29,10 @@ class CategoryPresenter extends BasePresenter
 	public function actionShow($id, $name)
 	{
 		$categoryManager = $this->getCategoryManager();
+		$productManager = $this->getManagerFactory()->product();
 		$categoryDibiObject = $categoryManager->find($id);
 
+		//Check kategory ID in url
 		if (FALSE === $categoryDibiObject) {
 
 			// Set 404 by set new template
@@ -46,26 +48,21 @@ class CategoryPresenter extends BasePresenter
 		// Initialize object Category
 		$this->category = new \App\Model\Category\Category($categoryDibiObject);
 
+		// Check category webname in url
 		if ($this->category->webname != $name) {
 			$this->redirect(301,'Category:show', array('id' => $id, 'name' => $this->category->webname));
 		}
 
-		$productManager = $this->getManagerFactory()->product();
-
-		$products = $productManager->findAllByCategoryFluent($this->category->id);
-		/** @var \DibiFluent $products */
-
+		// Paginator
+		$totalProductsCount = $productManager->getCountByCategory($this->category->id);
 		$paginator = $this->getPaginator();
-		$paginator->setItemCount(count($products));
+		$paginator->setItemCount($totalProductsCount);
 		$paginator->setItemsPerPage($this->getPaginatorItemsPerPage());
 
 		// GEt products of category
 		$limit = $paginator->getLength();
 		$offset = $paginator->getOffset();
-		$products->limit($limit);
-		$products->offset($offset);
-		$this->products = $products->fetchAll();
-
+		$this->products = $productManager->findAllByCategory($this->category->id, $limit, $offset);
 	}
 
 	public function renderShow()

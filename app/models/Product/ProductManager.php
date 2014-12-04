@@ -45,17 +45,47 @@ final class ProductManager extends \Core\Base\BaseManager
 		return $this->dibi()->select('*')->from($this->getName())->where(array('id' => $id))->fetch();
 	}
 
-		/**
+	/**
+	 * Get products count in desired category
 	 *
+	 * @param int $catId
+	 * @return int
 	 */
-	public function findAllByCategory($catId)
+	public function getCountByCategory($catId)
 	{
 		return $this->dibi()->query('
-			SELECT * FROM [' . $this->getName() . '] p
+			SELECT COUNT(id) FROM [' . $this->getName() . '] p
 			INNER JOIN  [product_category] pc ON (p.id = pc.product_id)
 			WHERE pc.category_id = %i',
 			$catId
-			)->fetchAll();
+			)->fetchSingle();
+	}
+
+
+	/**
+	 * Get products by category
+	 *
+	 * @param type $catId
+	 * @param type $limit
+	 * @param type $offset
+	 * @return array
+	 */
+	public function findAllByCategory($catId, $limit = null, $offset = null)
+	{
+		$data = array();
+
+		$result =  $this->dibi()->query('
+			SELECT * FROM [' . $this->getName() . '] p
+			INNER JOIN  [product_category] pc ON (p.id = pc.product_id)
+			WHERE pc.category_id = %i %lmt %ofs',
+			$catId, $limit, $offset
+			);
+
+		while($row = $result->fetch()){
+			$data[] =  new Product($row);
+		}
+
+		return $data;
 	}
 
 	/**
