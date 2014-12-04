@@ -26,14 +26,15 @@ final class File extends \Core\Base\BaseObject
 	 * Tyep of file
 	 *
 	 * @var int
+	 *  @column(name="file_type_id",type="datetime")
 	 */
-	private $fileTypeId;
+	private $file_type_id;
 
 	/**
 	 * File created date
 	 *
 	 * @var \DateTime
-	 * @column(name="created",type="datetime",)
+	 * @column(name="created",type="datetime")
 	 */
 	private $created;
 
@@ -93,18 +94,18 @@ final class File extends \Core\Base\BaseObject
 	 *
 	 * @return int
 	 */
-	public function getFileTypeId()
+	public function getFile_type_id()
 	{
-		return $this->fileTypeId;
+		return $this->file_type_id;
 	}
 
 	/**
 	 *
 	 * @param int $fileType
 	 */
-	public function setFileTypeId($fileType)
+	public function setFile_type_id($fileType)
 	{
-		$this->fileTypeId = $fileType;
+		$this->file_type_id = $fileType;
 	}
 
 	/**

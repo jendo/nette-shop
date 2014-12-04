@@ -47,6 +47,27 @@ final class FileManager extends \Core\Base\BaseManager
 
 	/**
 	 *
+	 * @param int $id Product ID
+	 * @return array Product files
+	 */
+	public function findProductFiles($id)
+	{
+		$data = array();
+		$result = $this->dibi()->select('*')
+						->from($this->getName(),'f')
+						->innerJoin('product_file', 'pf')
+						->on('f.id = pf.file_id')
+						->where('pf.product_id = %i',$id)
+						->execute();
+		
+		while($row = $result->fetch()){
+			$data[] = new File($row);
+		}
+		return $data;
+	}
+
+	/**
+	 *
 	 * @param \App\Model\Trip\Trip $trip
 	 * @param \App\Model\File\File $file
 	 * @return boolean
