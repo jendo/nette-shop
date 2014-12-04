@@ -103,6 +103,13 @@ final class Product extends \Core\Base\BaseObject
 	private $active;
 
 	/**
+	 * Product
+	 *
+	 * @var type
+	 */
+	private $files;
+
+	/**
 	 *
 	 * @return int
 	 */
@@ -316,6 +323,35 @@ final class Product extends \Core\Base\BaseObject
 	public function setActive($active)
 	{
 		$this->active = $active;
+	}
+
+	/**
+	 *
+	 * @return type
+	 */
+	public function getFiles()
+	{
+		return $this->files;
+	}
+
+	/**
+	 *
+	 * @param \App\Model\File\File $file
+	 */
+	public function setFile(\App\Model\File\File $file)
+	{
+		$this->files[] = $file;
+	}
+
+	/**
+	 *
+	 * @param array $files
+	 */
+	public function setFiles(array $files)
+	{
+		foreach ($files as $file) {
+			$this->setFile($file);
+		}
 	}
 
 	public function toArray()

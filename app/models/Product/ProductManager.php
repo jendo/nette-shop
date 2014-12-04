@@ -103,7 +103,7 @@ final class ProductManager extends \Core\Base\BaseManager
 
 		return $products;
 	}
-
+	
 	public function getName()
 	{
 		return self::NAME;
