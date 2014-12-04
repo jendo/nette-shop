@@ -22,7 +22,7 @@ class ManagerFactory extends \Core\Base\BaseFactory
 	/**
 	 * Returns File manager
 	 *
-	 * @return App\Model\FileManager
+	 * @return \App\Model\File\FileManager
 	 */
 	public function file()
 	{
