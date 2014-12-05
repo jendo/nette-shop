@@ -40,6 +40,13 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	public $mainUplodaDir;
 
 	/**
+	 * Main file dir, files moved from upload dir
+	 *
+	 * @var string
+	 */
+	public $fileDir;
+
+	/**
 	 * Alert succes class
 	 */
 	const ALERT_SUCCESS = 'alert-success';
@@ -83,6 +90,15 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		return $this->mainUplodaDir;
 	}
 
+	/**
+	 * Gets main upload dir
+	 *
+	 * @return string
+	 */
+	public function getFileDir()
+	{
+		return $this->fileDir;
+	}
 
 	/**
 	 *
@@ -120,6 +136,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		parent::startup();
 		$this->translator->setCurrentLang($this->lang);
 		$this->mainUplodaDir = Nette\Environment::getVariable('uploadDir');
+		$this->fileDir = Nette\Environment::getVariable('fileDir');
 	}
 
 	protected function beforeRender()
