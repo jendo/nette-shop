@@ -19,7 +19,6 @@ class CategoryPresenter extends BasePresenter
 	 */
 	private $products;
 
-
 	/**
 	 * Show category
 	 *
@@ -30,6 +29,8 @@ class CategoryPresenter extends BasePresenter
 	{
 		$categoryManager = $this->getCategoryManager();
 		$productManager = $this->getManagerFactory()->product();
+		$fileManager = $this->getManagerFactory()->file();
+
 		$categoryDibiObject = $categoryManager->find($id);
 
 		//Check kategory ID in url
@@ -62,11 +63,20 @@ class CategoryPresenter extends BasePresenter
 		// GEt products of category
 		$limit = $paginator->getLength();
 		$offset = $paginator->getOffset();
-		$this->products = $productManager->findAllByCategory($this->category->id, $limit, $offset);
+		$products = $productManager->findAllByCategory($this->category->id, $limit, $offset);
+
+		// toto je zle , lebo robim 2x tu istu iteraciu => !!!!!! => spravime si view napr. ...
+		foreach($products as $product) {
+			$product->setFiles($fileManager->findProductFiles($product->getId()));
+			$this->products[] = $product;
+		}
 	}
 
 	public function renderShow()
 	{
+		$photo = $this->getPhotoProperties();
+		$this->template->width = $photo['listingProperties']['width'];
+		$this->template->height = $photo['listingProperties']['height'];
 		$this->template->category = $this->category;
 		$this->template->products = $this->products;
 	}
