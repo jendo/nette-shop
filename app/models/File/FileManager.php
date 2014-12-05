@@ -46,6 +46,21 @@ final class FileManager extends \Core\Base\BaseManager
 	}
 
 	/**
+	 * Find file
+	 *
+	 * @param id $id
+	 * @return boolean|File
+	 */
+	public function find($id)
+	{
+		$row = $this->dibi()->select('*')->from($this->getName())->where(array('id' => $id))->fetch();
+		if(!$row){
+			return FALSE;
+		}
+		return new File($row);
+	}
+
+	/**
 	 *
 	 * @param int $id Product ID
 	 * @return array Product files
@@ -59,7 +74,7 @@ final class FileManager extends \Core\Base\BaseManager
 						->on('f.id = pf.file_id')
 						->where('pf.product_id = %i',$id)
 						->execute();
-		
+
 		while($row = $result->fetch()){
 			$data[] = new File($row);
 		}
