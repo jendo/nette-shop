@@ -11,10 +11,18 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
 	/** @var \App\Model\CategoryManager  */
 	private $categoryManager;
 
+	/**
+	 * Genereal photo properties
+	 *
+	 * @var array
+	 */
+	private $photo;
+
 	protected function startup()
 	{
 		parent::startup();
 		$this->categoryManager = $this->getManagerFactory()->category();
+		$this->photo = \Nette\Environment::getVariable('photo');
 	}
 
 	protected function beforeRender()
@@ -71,6 +79,16 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
 	{
 		$paginator =  \Nette\Environment::getVariable('paginator');
 		return $paginator['itemsPerPage'];
+	}
+
+	/**
+	 * Gets general photyo properties
+	 *
+	 * @return array
+	 */
+	public function getPhotoProperties()
+	{
+		return $this->photo;
 	}
 
 }
