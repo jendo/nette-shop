@@ -60,6 +60,14 @@ class RouterFactory
 						)
 		);
 
+		$router[] = new Route(
+						'data/images/<id>/<maxwidth>/<maxheight>/<name>',
+						array(
+								'module' => 'Core',
+								'presenter' => 'Tools',
+								'action' => 'ShowFullImage'
+						)
+		);
 
 		$router[] = new Route('<presenter>/<action>[/<id>]', array(
 				'module' => 'Front',
