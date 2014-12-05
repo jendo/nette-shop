@@ -5,4 +5,8 @@
 
 <h1>{$product->name}</h1>
 
+{foreach $product->files as $file}
+	<img src="{$file|fullImgUrl,$presenter,$width, $height}" alt="" />
+{/foreach}
+
 {/block}
