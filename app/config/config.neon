@@ -14,7 +14,7 @@ parameters:
 		itemsPerPage: 8
 	photo:
 		listingProperties:
-			width: 210
+			width: 220
 			height: 260
 		mainPhotoProperties:
 			width: 210

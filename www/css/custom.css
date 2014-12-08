@@ -32,3 +32,8 @@ body > div.container{
 
 }
 
+div.product{
+	position: relative;
+	margin-bottom: 20px;
+}
+
