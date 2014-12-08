@@ -11,9 +11,7 @@
 			<div class="span3">
 				<h2><a n:href=":Front:Product:show $product->id,$product->webname">{$product->name}</a></h2>
 				<p>{$product->description}</p>
-				{foreach $product->files as $file}
-					<img src="{$file|fullImgUrl,$presenter,$width, $height}" alt="" />
-				{/foreach}
+				<img src="{$product->file_id|showFile,$product->filename,$presenter,$width, $height}" alt="" />
 			</div>
 		{last 4}</div>{/last}
 	{/foreach}

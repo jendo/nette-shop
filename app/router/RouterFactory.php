@@ -61,11 +61,11 @@ class RouterFactory
 		);
 
 		$router[] = new Route(
-						'data/images/<id>/<maxwidth>/<maxheight>/<name>',
+						'data/images/<id>/<maxwidth>/<maxheight>/<filename>',
 						array(
 								'module' => 'Core',
 								'presenter' => 'Tools',
-								'action' => 'ShowFullImage'
+								'action' => 'ShowFile'
 						)
 		);
 

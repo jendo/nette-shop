@@ -53,5 +53,12 @@ class TemplateHelpers extends \Nette\Object
 		return $presenter->link(':Core:Tools:showFullImage', $attrs);
 	}
 
+	public function showFile($id,$filename,\Nette\Application\UI\Presenter $presenter, $maxwidth = 100, $maxheight = 100)
+	{
+		//return 'no_image.jpg';
+		$attrs = array('id' => $id, 'filename' => $filename, 'maxwidth' => $maxwidth, 'maxheight' => $maxheight);
+		return $presenter->link(':Core:Tools:showFile', $attrs);
+	}
+
 
 }

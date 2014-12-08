@@ -6,6 +6,13 @@ final class ProductManager extends \Core\Base\BaseManager
 {
 
 	/**
+	 * Id column
+	 *
+	 * @var string
+	 */
+	const COLUMN_ID = 'id';
+
+	/**
 	 * Name column
 	 *
 	 * @var string
@@ -20,11 +27,68 @@ final class ProductManager extends \Core\Base\BaseManager
 	const COLUMN_WEBNANE = 'webname';
 
 	/**
-	 * Filename price
+	 * Product price
 	 *
 	 * @var float
 	 */
 	const COLUMN_PRICE = 'price';
+
+	/**
+	 * Product desc.
+	 *
+	 * @var float
+	 */
+	const COLUMN_DESC = 'description';
+
+	/**
+	 * Product created date
+	 *
+	 * @var float
+	 */
+	const COLUMN_CREATED = 'created';
+
+	/**
+	 * Product modified date
+	 *
+	 * @var float
+	 */
+	const COLUMN_MODIFIED = 'modified';
+
+	/**
+	 * Product deleted date
+	 *
+	 * @var float
+	 */
+	const COLUMN_DELETED = 'deleted';
+
+	/**
+	 * Product flag new
+	 *
+	 * @var float
+	 */
+	const COLUMN_NEW_FLAG = 'new';
+
+	/**
+	 * Product flag top
+	 *
+	 * @var float
+	 */
+	const COLUMN_TOP_FLAG = 'top';
+
+	/**
+	 * Product flag top
+	 *
+	 * @var float
+	 */
+	const COLUMN_AVAIBLE_FLAG = 'avaible';
+
+	/**
+	 * Product flag active
+	 *
+	 * @var float
+	 */
+	const COLUMN_ACTIVE_FLAG = 'active';
+
 
 	/**
 	 * Manager name
@@ -75,9 +139,23 @@ final class ProductManager extends \Core\Base\BaseManager
 		$data = array();
 
 		$result =  $this->dibi()->query('
-			SELECT * FROM [' . $this->getName() . '] p
-			INNER JOIN  [product_category] pc ON (p.id = pc.product_id)
-			WHERE pc.category_id = %i %lmt %ofs',
+			SELECT
+				' . self::COLUMN_ID . ',
+				' . self::COLUMN_NAME . ',
+				' . self::COLUMN_WEBNANE . ',
+				' . self::COLUMN_PRICE . ',
+				' . self::COLUMN_DESC . ',
+				' . self::COLUMN_CREATED . ',
+				' . self::COLUMN_MODIFIED . ',
+				' . self::COLUMN_DELETED . ' ,
+				' . self::COLUMN_NEW_FLAG . ',
+				' . self::COLUMN_TOP_FLAG . ',
+				' . self::COLUMN_AVAIBLE_FLAG . ',
+				' . self::COLUMN_ACTIVE_FLAG . ',
+				file_id,
+				filename
+			FROM [' . $this->getViewName() . ']
+			WHERE ' . self::COLUMN_AVAIBLE_FLAG . ' = 1 AND category_id = %i %lmt %ofs',
 			$catId, $limit, $offset
 			);
 
@@ -103,10 +181,15 @@ final class ProductManager extends \Core\Base\BaseManager
 
 		return $products;
 	}
-	
+
 	public function getName()
 	{
 		return self::NAME;
+	}
+
+	public function getViewName()
+	{
+		return 'view_product';
 	}
 
 }

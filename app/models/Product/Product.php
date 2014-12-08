@@ -110,6 +110,20 @@ final class Product extends \Core\Base\BaseObject
 	private $files;
 
 	/**
+	 * Foregin key - file id (view column)
+	 *
+	 * @var int
+	 */
+	private $file_id;
+
+	/**
+	 * Product filename (view column)
+	 *
+	 * @var string
+	 */
+	private $filename;
+
+	/**
 	 *
 	 * @return int
 	 */
@@ -354,6 +368,49 @@ final class Product extends \Core\Base\BaseObject
 		}
 	}
 
+	/**
+	 * Set product file id
+	 *
+	 * @param type $fileId
+	 */
+	public function setFile_id($fileId)
+	{
+		$this->file_id = $fileId;
+	}
+
+	/**
+	 * Get product file id
+	 *
+	 * @return type
+	 */
+	public function getFile_id()
+	{
+		return $this->file_id;
+	}
+
+	/**
+	 * Get product filename (view column)
+	 *
+	 * @return string
+	 */
+	public function getFilename()
+	{
+		return $this->filename;
+	}
+
+	/**
+	 * Set product photo filename
+	 *
+	 * @param type $filename
+	 */
+	public function setFilename($filename)
+	{
+		$this->filename = $filename;
+	}
+
+	/**
+	 *
+	 */
 	public function toArray()
 	{
 
