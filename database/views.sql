@@ -19,4 +19,5 @@ CREATE OR REPLACE VIEW `view_product`
 	INNER JOIN product_category pc ON (pc.product_id = p.id)
 	INNER JOIN  product_file pf ON (p.id = pf.product_id)
 	INNER JOIN file f ON (f.id = pf.file_id)
+  WHERE f.main = 1
 	ORDER BY p.name ASC
