@@ -66,6 +66,8 @@ class MigrationPresenter extends SecurePresenter
 				}
 			}
 
+			$oldProductId = (int) $rowdata['id'];
+
 			// Ak existuje vazba na existujucu kategoriu
 			if (isset($this->categories[$rowdata['c_id']])) {
 				$this->dibi->begin();
@@ -75,11 +77,17 @@ class MigrationPresenter extends SecurePresenter
 				// Table product_category
 				$data = array('product_id' => $productId, 'category_id' => $this->categories[$rowdata['c_id']] );
 				$this->dibi->insert('product_category', $data)->execute();
+
+				// TODO: Table file and file_product
+				$oldProductId = rand(40, 387);
+				$files = $this->dibi->query('SELECT imgfile FROM old_product2 WHERE id = %i',$oldProductId)->fetchAll();
+				foreach($files as $file){
+					$fileId = $this->dibi->insert('file', array('filename' => $file->imgfile, 'file_type_id' => 1 ))->execute(\dibi::IDENTIFIER);
+					$data = array('product_id' => $productId, 'file_id' => $fileId );
+					$this->dibi->insert('product_file', $data)->execute();
+				}
+
 				$this->dibi->commit();
-
-				// TODO: Table file
-
-				// TODO : TAble file_product
 			}
 		}
 		echo "OK";
