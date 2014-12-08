@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `file` (
   `id` INT NOT NULL AUTO_INCREMENT COMMENT 'File ID',
   `filename` VARCHAR(150) NOT NULL COMMENT 'File name',
   `file_type_id` INT NOT NULL COMMENT 'File type ID',
+  `main` INT NOT NULL DEFAULT 0 COMMENT 'Is main product file ?',
   `created` TIMESTAMP NOT NULL DEFAULT now() COMMENT 'Created date',
   `modified` TIMESTAMP NULL COMMENT 'Modified date',
   `deleted` TIMESTAMP NULL COMMENT 'Deleted date',
@@ -132,11 +133,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `product_file`
+-- Table `file_product`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `product_file` ;
+DROP TABLE IF EXISTS `file_product` ;
 
-CREATE TABLE IF NOT EXISTS `product_file` (
+CREATE TABLE IF NOT EXISTS `file_product` (
   `product_id` INT NOT NULL COMMENT 'Product ID',
   `file_id` INT NOT NULL COMMENT 'File ID',
   PRIMARY KEY (`product_id`, `file_id`),
