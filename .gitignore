@@ -1,5 +1,7 @@
 log/*
 temp/*
+uploads/*
+files/*
 vendor/*
 !vendor/others
 
