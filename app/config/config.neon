@@ -15,13 +15,15 @@ parameters:
 	photo:
 		listingProperties:
 			width: 220
-			height: 260
+			height: 280
 		mainPhotoProperties:
 			width: 210
 			height: 260
-	global:
-		price:
-			decimals: 2
+	price:
+		decimals: 2
+		decimalpoint: ','
+		separator: '&nbsp;'
+		currency: '&euro;'
 
 
 php:
