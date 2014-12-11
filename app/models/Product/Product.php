@@ -31,12 +31,20 @@ final class Product extends \Core\Base\BaseObject
 	private $webname;
 
 	/**
-	 * Product webname
+	 * Product price
 	 *
 	 * @var string Product price
 	 * @column(name="price",type="decimal", precision=4,scale=2)
 	 */
 	private $price;
+
+	/**
+	 * Product special price
+	 *
+	 * @var string Product price
+	 * @column(name="special_price",type="decimal", precision=4,scale=2)
+	 */
+	private $special_price;
 
 	/**
 	 * Product webname
@@ -194,6 +202,25 @@ final class Product extends \Core\Base\BaseObject
 	{
 		$this->price = $price;
 	}
+
+	/**
+	 *
+	 * @return float
+	 */
+	public function getSpecial_price()
+	{
+		return $this->special_price;
+	}
+
+	/**
+	 *
+	 * @param float $special_price
+	 */
+	public function setSpecial_price($special_price)
+	{
+		$this->special_price = $special_price;
+	}
+
 
 	/**
 	 *
@@ -419,6 +446,15 @@ final class Product extends \Core\Base\BaseObject
 	}
 
 	/**
+	 *
+	 * @return bool
+	 */
+	public function hasDiscount()
+	{
+		return $this->special_price > 0 && ($this->special_price < $this->price);
+	}
+
+		/**
 	 *
 	 */
 	public function toArray()

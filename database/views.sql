@@ -5,6 +5,7 @@ CREATE OR REPLACE VIEW `view_product`
 			p.name,
 			p.webname,
 			p.price,
+			p.special_price,
 			p.description,
 			p.created,
 			p.modified,

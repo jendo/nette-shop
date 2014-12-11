@@ -58,7 +58,7 @@ div.product > a >  div > div.new {
 	padding-bottom: 5px;
 }
 
-div.product > a >  div > div.name {
+div.product div.name {
 	color: red;
 	text-transform: uppercase;
 	font-weight: bold;
@@ -69,7 +69,7 @@ div.product > a >  div > div.name {
 	height: auto;
 }
 
-div.product > a > div > div.price {
+div.product  div.price {
 	color: #FFF;
 	text-transform: uppercase;
 	font-weight: bold;
@@ -81,7 +81,14 @@ div.product > a > div > div.price {
 	margin-bottom: 10px;
 }
 
-div.product > a >  div > div.line {
+div.product  div.price > span {
+	text-decoration: line-through;
+	font-size: 0.6em;
+	font-weight: normal;
+	color: lightgray;
+}
+
+div.product  div.line {
 	background: #fff;
 	height: 1px;
 	width: 50px;

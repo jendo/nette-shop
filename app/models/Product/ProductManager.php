@@ -34,6 +34,13 @@ final class ProductManager extends \Core\Base\BaseManager
 	const COLUMN_PRICE = 'price';
 
 	/**
+	 * Product price
+	 *
+	 * @var float
+	 */
+	const COLUMN_SPECIAL_PRICE = 'special_price';
+
+	/**
 	 * Product desc.
 	 *
 	 * @var float
@@ -144,6 +151,7 @@ final class ProductManager extends \Core\Base\BaseManager
 				' . self::COLUMN_NAME . ',
 				' . self::COLUMN_WEBNANE . ',
 				' . self::COLUMN_PRICE . ',
+				' . self::COLUMN_SPECIAL_PRICE . ',
 				' . self::COLUMN_DESC . ',
 				' . self::COLUMN_CREATED . ',
 				' . self::COLUMN_MODIFIED . ',

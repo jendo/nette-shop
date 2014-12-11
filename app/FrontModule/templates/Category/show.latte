@@ -18,7 +18,10 @@
 							<div class="new">{if $product->isNew()}{_ 'Novinka!'}{/if}</div>
 							<div class="name">{$product->name}</div>
 							<div class="line"></div>
-							<div class="price">{$product->price|formatPrice}</div>
+							<div class="price">
+								{if $product->hasDiscount()}<span>{$product->special_price|formatPrice}</span>{/if}
+								{$product->price|formatPrice}
+							</div>
 						</div>
 					</a>
 				</div>
