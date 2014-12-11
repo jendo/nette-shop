@@ -22,13 +22,23 @@ Nette.addError = function(elem, message) {
 	}
 };
 
+// Shorthand for document ready
 $(function(){
-	//alert(Nette.formMsgTarget);
 
-	// File input
-	$('input[type=file]').bootstrapFileInput();
-
-	//Alerts
-	$(".alert").alert();
+	// My own image preloader
+	$('img').css('opacity',0); // hide all images
+	$('.product_info').css('display','none'); // hide all images
+	$('img').each(function(){
+		var img = $(this);
+		img.load(function(){
+			img.animate({'opacity':1},250,function(){
+				$(this).parent('a').siblings('div.loader').css('display','none');
+				$(this).siblings('.black_gradient').css('display','block');
+				$(this).siblings('.product_info').css('display','block');
+			});
+		});
+	});
 
 });
+
+
