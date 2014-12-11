@@ -12,7 +12,7 @@
 				<div class="product">
 					<div class="loader"><span></span></div>
 					<a n:href=":Front:Product:show $product->id,$product->webname">
-						<img src="{$product->file_id|showFile,$product->filename,$presenter,$width, $height}" alt="" />
+						<img src="{$product->file_id|showFile,$product->filename,$presenter,$width, $height}" alt="{$product->name}" />
 						<div class="black_gradient none h120"></div>
 						<div class="product_info ">
 							<div class="new">{if $product->isNew()}{_ 'Novinka!'}{/if}</div>
