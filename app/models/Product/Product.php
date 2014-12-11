@@ -286,6 +286,16 @@ final class Product extends \Core\Base\BaseObject
 	}
 
 	/**
+	 * Is product new ?
+	 *
+	 * @return bool
+	 */
+	public function isNew()
+	{
+		return $this->new == 1;
+	}
+
+	/**
 	 *
 	 * @return int
 	 */
