@@ -113,7 +113,11 @@ final class ProductManager extends \Core\Base\BaseManager
 	 */
 	public function find($id)
 	{
-		return $this->dibi()->select('*')->from($this->getName())->where(array('id' => $id))->fetch();
+		$row = $this->dibi()->select('*')->from($this->getName())->where(array('id' => $id))->fetch();
+		if(!$row){
+			return FALSE;
+		}
+		return new Product($row);
 	}
 
 	/**

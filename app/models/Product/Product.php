@@ -132,6 +132,13 @@ final class Product extends \Core\Base\BaseObject
 	private $filename;
 
 	/**
+	 * Main product file
+	 *
+	 * @var \App\Model\File\File
+	 */
+	private $mainProductFile;
+
+	/**
 	 *
 	 * @return int
 	 */
@@ -444,6 +451,27 @@ final class Product extends \Core\Base\BaseObject
 	{
 		$this->filename = $filename;
 	}
+
+	/**
+	 * Gets main product file
+	 *
+	 * @return \App\Model\File\File
+	 */
+	public function getMainProductFile()
+	{
+		return $this->mainProductFile;
+	}
+
+	/**
+	 * Set main product file
+	 *
+	 * @param \App\Model\File\File $mainProductFile
+	 */
+	public function setMainProductFile(\App\Model\File\File $mainProductFile)
+	{
+		$this->mainProductFile = $mainProductFile;
+	}
+
 
 	/**
 	 *

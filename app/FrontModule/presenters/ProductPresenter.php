@@ -21,9 +21,8 @@ final class ProductPresenter extends BasePresenter
 	{
 		$productManager = $this->getManagerFactory()->product();
 		$fileManager = $this->getManagerFactory()->file();
-		$dibiObject = $productManager->find($id);
-		$this->product = new \App\Model\Product\Product($dibiObject);
-		$this->product->setFiles($fileManager->findProductFiles($id));
+		$this->product = $productManager->find($id);
+		$this->product->setMainProductFile($fileManager->findMainProductFile($id));
 	}
 
 	public function renderShow()

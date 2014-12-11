@@ -2,11 +2,11 @@
 {block title}{$product->name}{/block}
 
 {block content}
+{var $file = $product->getMainProductFile()}
 
 <h1>{$product->name}</h1>
 
-{foreach $product->files as $file}
-	<img src="{$file|fullImgUrl,$presenter,$width, $height}" alt="" />
-{/foreach}
+<img src="{$file->id|showFile,$file->filename,$presenter,$width, $height}" alt="" />
+
 
 {/block}
