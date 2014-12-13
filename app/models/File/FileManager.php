@@ -70,7 +70,7 @@ final class FileManager extends \Core\Base\BaseManager
 		$data = array();
 		$result = $this->dibi()->select('*')
 						->from($this->getName(),'f')
-						->innerJoin('product_file', 'pf')
+						->innerJoin('file_product', 'pf')
 						->on('f.id = pf.file_id')
 						->where('pf.product_id = %i',$id)
 						->execute();
@@ -91,7 +91,7 @@ final class FileManager extends \Core\Base\BaseManager
 	{
 		$row = $this->dibi()->select('*')
 						->from($this->getName(),'f')
-						->innerJoin('product_file', 'pf')
+						->innerJoin('file_product', 'pf')
 						->on('f.id = pf.file_id')
 						->where('pf.product_id = %i AND f.main = 1',$id)
 						->fetch();
