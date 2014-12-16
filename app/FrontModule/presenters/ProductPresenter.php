@@ -12,7 +12,14 @@ final class ProductPresenter extends BasePresenter
 	 */
 	private $product;
 
-	/**
+	public function createComponentOrderForm($name)
+	{
+			$orderForm = new \App\FrontModule\Forms\OrderForm();
+			$formComponent = new \Components\FormComponent($orderForm, $this, $name);
+			return $formComponent->create();
+	}
+
+		/**
 	 *
 	 * @param int $id
 	 * @param string $name
