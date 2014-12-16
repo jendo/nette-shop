@@ -41,11 +41,11 @@ class TemplateHelpers extends \Nette\Object
 	 * @param float $price
 	 * @return string
 	 */
-	public function formatPrice($price)
+	public function formatPrice($price, $decimals = NULL, $decimalpoint = NULL, $separator = NULL)
 	{
-		$decimals = $this->parameters['price']['decimals'];
-		$decimalpoint = $this->parameters['price']['decimalpoint'];
-		$separator = $this->parameters['price']['separator'];
+		$decimals =  $decimals ? $decimals : $this->parameters['price']['decimals'];
+		$decimalpoint = $decimalpoint ? $decimalpoint : $this->parameters['price']['decimalpoint'];
+		$separator = $separator ? $separator : $this->parameters['price']['separator'];
 		$currency = $this->parameters['price']['currency'];
 		$tax = $this->parameters['price']['tax'];
 
