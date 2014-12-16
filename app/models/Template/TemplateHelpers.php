@@ -47,9 +47,12 @@ class TemplateHelpers extends \Nette\Object
 		$decimalpoint = $this->parameters['price']['decimalpoint'];
 		$separator = $this->parameters['price']['separator'];
 		$currency = $this->parameters['price']['currency'];
+		$tax = $this->parameters['price']['tax'];
+
+		$price = round($price * $tax,$decimals);
 
 		$foramttedNumber = number_format($price,$decimals,$decimalpoint,$separator);
-		return html_entity_decode($foramttedNumber . '&nbsp;' . $currency);
+		return html_entity_decode($foramttedNumber . '&nbsp;' . $currency,ENT_COMPAT, 'UTF-8');
 	}
 
 	/**

@@ -17,13 +17,14 @@ parameters:
 			width: 220
 			height: 280
 		mainPhotoProperties:
-			width: 210
-			height: 260
+			width: 300
+			height: 400
 	price:
 		decimals: 2
 		decimalpoint: ','
 		separator: '&nbsp;'
-		currency: '&euro;'
+		currency: 'EUR'
+		tax: 1.2
 
 
 php:
