@@ -14,6 +14,12 @@ final class OrderForm extends BaseForm
 		$textControls[] = $this->addText('name', 'Vaše meno')
 						->setAttribute('placeholder', '*VAŠE MENO');
 
+		$textControls[] = $this->addText('email', 'Email')
+						->setAttribute('placeholder', '*EMAIL');
+
+		$this->addTextArea('notice', 'Poznámka')
+						->setAttribute('placeholder', 'Váše prípadné poznámky, otázky k tomuto produktu ...');
+
 		//CSRF protection
 		$this->addProtection();
 
@@ -33,7 +39,12 @@ final class OrderForm extends BaseForm
 
 	public function formValidate(\IForm $form)
 	{
-
+		$values = $form->getValues(TRUE);
+		$this->presenter->payload->target['class'] = $this->getMsgTarget();
+		//$this->presenter->payload->focus['name'] = $key;
+		$form->addError('Prosím vyplňte všetky polia');
+		$this->presenter->invalidateControl('orderFormSnippet');
+		return $form->hasErrors();
 	}
 
 	public function processError(\IForm $form)
