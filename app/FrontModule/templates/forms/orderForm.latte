@@ -1,0 +1,19 @@
+{form form class => "" }
+{var $target = $form->getMsgTarget()}
+
+{include "$tplFrontDir/page/flashes.latte", flashes => $form->errors, target => $target}
+
+<div class="controls controls-row">
+	{input name class => "span4"}
+	{input email class => "span4"}
+</div>
+
+<div class="controls controls-row" >
+	{input notice class => "span8"}
+</div>
+
+<div class="controls">
+	{input send class => "btn btn-large btn-primary ajax-btn" }
+</div>
+
+{/form}
